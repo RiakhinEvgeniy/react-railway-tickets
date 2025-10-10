@@ -1,14 +1,17 @@
 .home-page {
-  background-image: url('@/assets/earth-from-space.png');
+  background-image: url("@/assets/earth-from-space.png");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  width: 1000px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
   &__wrapper {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
     width: 60%;
     max-width: 800px;
     padding: 0 1rem;
@@ -33,6 +36,7 @@
   .ticket-form {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     gap: 1rem;
 
@@ -41,7 +45,7 @@
       gap: 1rem;
     }
 
-    // Общие стили для других label (города, даты)
+    // Оставляю общие стили для других label (города, даты)
     label {
       display: flex;
       align-items: center;
@@ -53,70 +57,35 @@
     &__cities {
       display: flex;
       flex-direction: row;
+      justify-content: space-around;
       gap: 0.5rem;
-      height: 70px;
-
-      label {
-        display: flex;
-        flex-direction: column;
-        font-weight: 500;
-        color: #fff;
-      }
-
-      input {
-        padding: 0.5rem;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        width: 250px;
-        height: 41px;
-      }
+      height: 80px;
     }
 
     &__submit {
       margin-top: 1rem;
-      width: 91%;
-      padding: 0.7rem 2rem;
+      width: 84%;
+      padding: 1.3rem 2rem;
       font-weight: bold;
-      background-color: #28a745;
+      background-color: #5e4ae3;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
     &__dates {
       display: flex;
       flex-direction: row;
+      justify-content: space-around;
       gap: 0.5rem;
-      height: 70px;
+      height: 80px;
 
-      label {
-        display: flex;
-        flex-direction: column;
-        font-weight: 500;
-        color: #fff;
-      }
-
-      #return-date {
-        background-color: #3b3b3b;
-        color: #727171;
-        margin-top: 32px;
-      }
-
-      input[type='date'] {
-        padding: 0.5rem;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        width: 250px;
-        font-family: inherit;
-        font-size: 1rem;
-        background-color: #3b3b3b;
-        color: #727171;
-      }
-
-      input[type='date']::-webkit-calendar-picker-indicator {
-        filter: invert(0.4);
-        cursor: pointer;
+      // Специальные стили для поля возврата
+      .return-date-input {
+        .input-field__input--date {
+          margin-top: 32px;
+        }
       }
     }
   }

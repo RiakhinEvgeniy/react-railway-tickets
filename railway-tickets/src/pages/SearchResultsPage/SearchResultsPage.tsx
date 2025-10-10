@@ -2,18 +2,14 @@ import { useState } from "react";
 import RadioButton from "../../components/buttons/RadioButton";
 import TextInput from "../../components/inputs/TextInput";
 import DateInput from "../../components/inputs/DateInput";
-import { useNavigate } from "react-router-dom";
-import "./HomePage.scss";
-import { useTheme } from "../../context/ThemeContext";
+import "./SearchResultsPage.scss";
 
-function HomePage() {
+function SearchResultsPage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
   const [fromCity, setFromCity] = useState("");
   const [toCity, setToCity] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
-  const { changeTheme } = useTheme();
-  const navigate = useNavigate();
 
   const handleTripChange = (value: string) => {
     setTripType(value as "oneway" | "round");
@@ -28,19 +24,13 @@ function HomePage() {
       departureDate,
       returnDate: tripType === "round" ? returnDate : null,
     });
-
-    changeTheme();
-    navigate("/search");
+    // Тут потом сделать редирект на / whatever
   };
 
   return (
-    <div className="home-page">
-      <div className="home-page__wrapper">
-        <header className="home-page__header">
-          <h1>Let’s Find That Ticket</h1>
-          <p>before someone else does</p>
-        </header>
-
+    <div className="search-page">
+      <h2 className="search-page__title">Search Results</h2>
+      <div className="search-page__wraper">
         <form className="ticket-form" onSubmit={handleSubmit}>
           {/* здесь будет toggle, поля ввода, счётчик пассажиров */}
 
@@ -78,7 +68,7 @@ function HomePage() {
               label="Arrival:"
               value={toCity}
               onChange={setToCity}
-              placeholder="Where to?"
+              placeholder="Where To?"
               name="toCity"
               required
             />
@@ -102,13 +92,26 @@ function HomePage() {
               />
             )}
           </div>
+
           <button type="submit" className="ticket-form__submit">
             Ticket, Please!
           </button>
         </form>
+        <div className="search-page__wraper__for-images">
+          <div className="search-page__wraper__for-images__image"></div>
+          <div className="search-page__wraper__for-images__second-img"></div>
+          <div className="search-page__wraper__text">
+            <span>Our trains don't just transport people, they transport emotions and 
+              stories! From the mountains of Darjeeling to the beaches of Goa, 
+              we connect more than just stations. As Raj Koothrappali would say, 
+              "In India, we don't just ride trains, we experience cosmic journeys 
+              with occasional cow delays." Book now and embrace the colorful chaos!</span>
+          </div>
+        </div>
+        <h1>Avilable Trains</h1>
       </div>
     </div>
   );
 }
 
-export default HomePage;
+export default SearchResultsPage;

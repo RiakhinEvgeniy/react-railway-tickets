@@ -1,88 +1,88 @@
 // RadioButton.scss
 .radio-button {
-    display: inline-flex;
-    align-items: center;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 20px;
+  user-select: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  // Скрываем стандартный input radio
+  &__input {
+    position: absolute;
+    opacity: 0;
     cursor: pointer;
-    margin-right: 20px;
-    user-select: none;
-    transition: opacity 0.2s ease;
+    width: 0;
+    height: 0;
+  }
+
+  // Стилизуем label
+  &__label {
+    position: relative;
+    padding-left: 25px;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 500;
+    color: black;
+
+    // Создаем кастомную радио кнопку
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      background: transparent; // Прозрачный фон для темной темы
+      transition: all 0.2s ease;
+    }
+
+    // Внутренний кружок для активного состояния
+    &::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1e90ff;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+  }
+
+  // Когда радио кнопка выбрана
+  &__input:checked + &__label {
+    &::before {
+      border-color: #1e90ff;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  // Состояние focus для доступности
+  &__input:focus + &__label::before {
+    box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.25);
+  }
+
+  // Заблокированное состояние
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 
     &:hover {
-        opacity: 0.8;
+      opacity: 0.5;
     }
-
-    // Скрываем стандартный input radio
-    &__input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        width: 0;
-        height: 0;
-    }
-
-    // Стилизуем label
-    &__label {
-        position: relative;
-        padding-left: 25px;
-        font-size: 16px;
-        line-height: 1.4;
-        font-weight: 500;
-        color: #fff;
-
-        // Создаем кастомную радио кнопку
-        &::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
-            border: 2px solid #ccc;
-            border-radius: 50%;
-            background: transparent; // Прозрачный фон для темной темы
-            transition: all 0.2s ease;
-        }
-
-        // Внутренний кружок для активного состояния
-        &::after {
-            content: '';
-            position: absolute;
-            left: 4px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #1e90ff;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-    }
-
-    // Когда радио кнопка выбрана
-    &__input:checked+&__label {
-        &::before {
-            border-color: #1e90ff;
-        }
-
-        &::after {
-            opacity: 1;
-        }
-    }
-
-    // Состояние focus для доступности
-    &__input:focus+&__label::before {
-        box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.25);
-    }
-
-    // Заблокированное состояние
-    &--disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-
-        &:hover {
-            opacity: 0.5;
-        }
-    }
+  }
 }

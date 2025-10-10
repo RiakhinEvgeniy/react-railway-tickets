@@ -1,0 +1,52 @@
+.date-input {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 0.25rem;
+    cursor: pointer;
+  }
+
+  &__required {
+    margin-left: 2px;
+  }
+
+  &__field {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: none;
+    width: 250px;
+    height: 42px;
+    font-family: inherit;
+    font-size: 1rem;
+    // background-color: #3b3b3b; // Темный фон
+    background-color: white;
+    color: black; // Серый цвет текста
+
+    &:focus {
+      outline: none;
+      border-color: #1e90ff;
+      box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.25);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    // Стилизация календарного индикатора
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(0.4);
+      cursor: pointer;
+    }
+  }
+
+  // Специальный стиль для обратной даты (return date)
+  &--return &__field {
+    margin-top: 24px; // Отступ сверху
+  }
+}
