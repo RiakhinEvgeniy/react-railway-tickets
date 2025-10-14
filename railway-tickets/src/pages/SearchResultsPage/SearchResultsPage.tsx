@@ -4,6 +4,7 @@ import TextInput from "../../components/inputs/TextInput";
 import DateInput from "../../components/inputs/DateInput";
 import "./SearchResultsPage.scss";
 import GeneralCard from "../../components/generalcard/GeneralCard";
+import Footer from "../../components/footer/Footer";
 
 function SearchResultsPage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
@@ -114,6 +115,7 @@ function SearchResultsPage() {
         <GeneralCard />
         <GeneralCard />
       </div>
+      <Footer />
     </div>
   );
 }
