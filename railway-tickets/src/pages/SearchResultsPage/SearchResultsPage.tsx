@@ -3,6 +3,7 @@ import RadioButton from "../../components/buttons/RadioButton";
 import TextInput from "../../components/inputs/TextInput";
 import DateInput from "../../components/inputs/DateInput";
 import "./SearchResultsPage.scss";
+import GeneralCard from "../../components/generalcard/GeneralCard";
 
 function SearchResultsPage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
@@ -109,6 +110,9 @@ function SearchResultsPage() {
           </div>
         </div>
         <h1>Avilable Trains</h1>
+        <GeneralCard />
+        <GeneralCard />
+        <GeneralCard />
       </div>
     </div>
   );

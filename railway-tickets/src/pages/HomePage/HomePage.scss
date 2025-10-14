@@ -43,6 +43,10 @@
     &__trip-type {
       display: flex;
       gap: 1rem;
+      background-color: green;
+      border-radius: 8px;
+      padding: 20px;
+      width: 84%;
     }
 
     // Оставляю общие стили для других label (города, даты)

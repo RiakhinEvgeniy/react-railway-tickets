@@ -3,8 +3,8 @@ import RadioButton from "../../components/buttons/RadioButton";
 import TextInput from "../../components/inputs/TextInput";
 import DateInput from "../../components/inputs/DateInput";
 import { useNavigate } from "react-router-dom";
-import "./HomePage.scss";
 import { useTheme } from "../../context/ThemeContext";
+import "./HomePage.scss";
 
 function HomePage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
