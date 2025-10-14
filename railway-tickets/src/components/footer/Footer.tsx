@@ -1,6 +1,5 @@
 import FooterInfo from "../footerinfo/FooterInfo";
 import whiteTrain from "../../assets/railtrain_logo_white.png";
-
 import "./Footer.scss";
 
 function Footer() {

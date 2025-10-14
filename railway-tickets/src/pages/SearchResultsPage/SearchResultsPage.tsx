@@ -5,6 +5,7 @@ import DateInput from "../../components/inputs/DateInput";
 import "./SearchResultsPage.scss";
 import GeneralCard from "../../components/generalcard/GeneralCard";
 import Footer from "../../components/footer/Footer";
+import PassengerCount from "../../components/passengercount/PassengerCount";
 
 function SearchResultsPage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
@@ -54,6 +55,9 @@ function SearchResultsPage() {
             >
               One Way
             </RadioButton>
+            <div>
+              <PassengerCount />
+            </div>
           </div>
 
           <div className="ticket-form__cities">
@@ -103,11 +107,14 @@ function SearchResultsPage() {
           <div className="search-page__wraper__for-images__image"></div>
           <div className="search-page__wraper__for-images__second-img"></div>
           <div className="search-page__wraper__text">
-            <span>Our trains don't just transport people, they transport emotions and 
-              stories! From the mountains of Darjeeling to the beaches of Goa, 
-              we connect more than just stations. As Raj Koothrappali would say, 
-              "In India, we don't just ride trains, we experience cosmic journeys 
-              with occasional cow delays." Book now and embrace the colorful chaos!</span>
+            <span>
+              Our trains don't just transport people, they transport emotions
+              and stories! From the mountains of Darjeeling to the beaches of
+              Goa, we connect more than just stations. As Raj Koothrappali would
+              say, "In India, we don't just ride trains, we experience cosmic
+              journeys with occasional cow delays." Book now and embrace the
+              colorful chaos!
+            </span>
           </div>
         </div>
         <h1>Avilable Trains</h1>
