@@ -5,6 +5,7 @@ import DateInput from "../../components/inputs/DateInput";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import "./HomePage.scss";
+import PassengerCount from "../../components/passengercount/PassengerCount";
 
 function HomePage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
@@ -42,8 +43,6 @@ function HomePage() {
         </header>
 
         <form className="ticket-form" onSubmit={handleSubmit}>
-          {/* здесь будет toggle, поля ввода, счётчик пассажиров */}
-
           <div className="ticket-form__trip-type">
             <RadioButton
               name="tripType"
@@ -62,6 +61,9 @@ function HomePage() {
             >
               One Way
             </RadioButton>
+            <div>
+              <PassengerCount />
+            </div>
           </div>
 
           <div className="ticket-form__cities">

@@ -1,7 +1,5 @@
-// RadioButton.tsx
 import React from "react";
 import "./RadioButton.scss";
-import { useLocation } from "react-router-dom";
 
 // 1. Определяем интерфейс для пропсов компонента
 interface RadioButtonProps {
@@ -21,16 +19,9 @@ function RadioButton({
   checked,
   onChange,
   children,
-  className = "",
+  className = "label",
   disabled = false,
 }: RadioButtonProps) {
-  const location = useLocation();
-  const homePage = location.pathname === "/";
-
-  const radionButtonStyle = {
-    color: homePage ? "white" : "black",
-  };
-
   // 3. Обработчик клика - вызывает onChange с нужным значением
   function handleChange() {
     if (!disabled) {
@@ -53,9 +44,7 @@ function RadioButton({
         disabled={disabled}
         className="radio-button__input"
       />
-      <span className="radio-button__label" style={radionButtonStyle}>
-        {children}
-      </span>
+      <span className="radio-button__label">{children}</span>
     </label>
   );
 }
