@@ -24,9 +24,13 @@
     height: 42px;
     font-family: inherit;
     font-size: 1rem;
-    // background-color: #3b3b3b;
     background-color: white;
     color: #999;
+
+    &__lightgray {
+      background-color: #e6e4f3;
+    }
+
     &::placeholder {
       color: black;
     }

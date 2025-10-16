@@ -1,0 +1,19 @@
+.billinginfo {
+  width: 100%;
+  border: 2px solid #888988;
+  border-radius: 8px;
+  color: black;
+  padding: 20px;
+  margin: 20px 0px;
+  background-color: white;
+
+  &__name-phone {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__food {
+    width: 100%;
+  }
+}

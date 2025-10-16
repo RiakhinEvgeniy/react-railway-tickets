@@ -2,12 +2,13 @@ import "./Header.scss";
 import train_white from "../../assets/railtrain_logo_white.png";
 import train_black from "../../assets/railtrain_logo.png";
 import { useTheme } from "../../context/ThemeContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Header() {
   const { theme } = useTheme();
   const location = useLocation();
   const homePage = location.pathname === "/";
+  const navigate = useNavigate();
 
   const headerStyle = {
     backgroundColor: homePage ? "black" : "rgb(240, 240, 240)",
@@ -16,9 +17,13 @@ function Header() {
 
   const srcImg = homePage ? train_white : train_black;
 
+  const navigateToHomePage = () => {
+    navigate("/");
+  }
+
   return (
     <div className="header" style={headerStyle}>
-      <div className="header__logo">
+      <div className="header__logo" onClick={navigateToHomePage}>
         <img
           className={`header__train header__train-${theme}`}
           src={srcImg}

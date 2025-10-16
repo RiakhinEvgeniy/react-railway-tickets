@@ -2,10 +2,11 @@ import { useState } from "react";
 import RadioButton from "../../components/buttons/RadioButton";
 import TextInput from "../../components/inputs/TextInput";
 import DateInput from "../../components/inputs/DateInput";
-import "./SearchResultsPage.scss";
 import GeneralCard from "../../components/generalcard/GeneralCard";
 import Footer from "../../components/footer/Footer";
 import PassengerCount from "../../components/passengercount/PassengerCount";
+import { useNavigate } from "react-router-dom";
+import "./SearchResultsPage.scss";
 
 function SearchResultsPage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
@@ -13,6 +14,7 @@ function SearchResultsPage() {
   const [toCity, setToCity] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
+  const navigate = useNavigate()
 
   const handleTripChange = (value: string) => {
     setTripType(value as "oneway" | "round");
@@ -27,7 +29,8 @@ function SearchResultsPage() {
       departureDate,
       returnDate: tripType === "round" ? returnDate : null,
     });
-    // Тут потом сделать редирект на / whatever
+    // Тут потом сделать редирект на / review
+    navigate("/review")
   };
 
   return (
@@ -35,7 +38,6 @@ function SearchResultsPage() {
       <h2 className="search-page__title">Search Results</h2>
       <div className="search-page__wraper">
         <form className="ticket-form" onSubmit={handleSubmit}>
-          {/* здесь будет toggle, поля ввода, счётчик пассажиров */}
 
           <div className="ticket-form__trip-type">
             <RadioButton
@@ -100,7 +102,7 @@ function SearchResultsPage() {
           </div>
 
           <button type="submit" className="ticket-form__submit">
-            Ticket, Please!
+            Book
           </button>
         </form>
         <div className="search-page__wraper__for-images">

@@ -1,4 +1,4 @@
-.date-input {
+.billing-input {
   display: flex;
   flex-direction: column;
 
@@ -12,19 +12,25 @@
   }
 
   &__required {
+    color: #ff6b6b;
     margin-left: 2px;
   }
 
   &__field {
     padding: 0.5rem;
     border-radius: 4px;
+    margin: 15px 0px;
     border: none;
-    width: 250px;
+    width: 350px;
     height: 42px;
     font-family: inherit;
     font-size: 1rem;
-    background-color: white;
-    color: black; // Серый цвет текста
+    background-color: #E6E4F3;
+    color: #999;
+
+    &::placeholder {
+      color: #90A3BF;
+    }
 
     &:focus {
       outline: none;
@@ -33,19 +39,15 @@
     }
 
     &:disabled {
-      opacity: 0.7;
+      background-color: #f5f5f5;
+      color: #999;
       cursor: not-allowed;
+      opacity: 0.7;
     }
 
-    // Стилизация календарного индикатора
-    &::-webkit-calendar-picker-indicator {
-      filter: invert(0.4);
-      cursor: pointer;
+    &:invalid:not(:placeholder-shown) {
+      border-color: #ff6b6b;
+      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.25);
     }
-  }
-
-  // Специальный стиль для обратной даты (return date)
-  &--return &__field {
-    margin-top: 24px; // Отступ сверху
   }
 }

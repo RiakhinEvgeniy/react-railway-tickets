@@ -1,0 +1,42 @@
+.food {
+    width: 100%;
+    height: 400px;
+    &__image {
+        border-radius: 10px;
+        background-image: url("@/assets/rice.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: calc(50%);
+        color: black;
+    }
+
+    &__info {
+        height: calc(50%);
+        display: flex;
+        flex-direction: column;
+        border: 2px solid #808180;
+        border-radius: 10px;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: 500;
+
+        &__title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__btn {
+        margin: 5px;
+        padding: 10px;
+        border: 2px solid #5E4AE3;
+        border-radius: 10px;
+        background-color: inherit;
+        color: black;
+        width: 75%;
+        font-weight: 500;
+        font-size: medium;
+    }
+}

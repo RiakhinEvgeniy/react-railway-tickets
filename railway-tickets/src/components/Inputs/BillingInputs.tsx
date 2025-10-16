@@ -1,10 +1,6 @@
-// TextInput.tsx
-import React from "react";
-import "./TextInput.scss";
-import { useLocation } from "react-router-dom";
+import "./BillingInputs.scss";
 
-// 1. Определяем интерфейс для пропсов
-interface TextInputProps {
+interface BillingInputsProps {
   label: string; // текст лейбла
   value: string; // текущее значение
   onChange: (value: string) => void; // функция изменения значения
@@ -16,8 +12,7 @@ interface TextInputProps {
   type?: "text" | "email" | "tel"; // тип input
 }
 
-// 2. Создаем функциональный компонент
-function TextInput({
+function BillingInputs({
   label,
   value,
   onChange,
@@ -26,34 +21,22 @@ function TextInput({
   className = "",
   disabled = false,
   required = false,
-  type = "text",
-}: TextInputProps) {
-  const location = useLocation();
-  const homePage = location.pathname === "/";
-
-  const textInputStyle = {
-      color: homePage ? "white" : "black",
-    };
-
+  type,
+}: BillingInputsProps) {
   // 3. Обработчик изменения значения
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     onChange(e.target.value);
   }
 
   // 4. Генерируем уникальный id для связи label и input
-  const inputId = `input-${name || label.toLowerCase().replace(/\s+/g, "-")}`;
+  const inputId = `billing-${name || label.toLowerCase().replace(/\s+/g, "-")}`;
 
   return (
-    <div className={`text-input ${className}`}>
-      <label
-        htmlFor={inputId}
-        style={textInputStyle}
-        className="text-input__label"
-      >
+    <div className={`billing-input ${className}`}>
+      <label htmlFor={inputId} className="billing-input__label">
         {label}
         {/* {required && <span className="text-input__required">*</span>} */}
       </label>
-
       <input
         id={inputId}
         type={type}
@@ -63,10 +46,10 @@ function TextInput({
         placeholder={placeholder}
         disabled={disabled}
         required={required}
-        className={`text-input__field text-input__field__${className}`}
+        className="billing-input__field"
       />
     </div>
   );
 }
 
-export default TextInput;
+export default BillingInputs;

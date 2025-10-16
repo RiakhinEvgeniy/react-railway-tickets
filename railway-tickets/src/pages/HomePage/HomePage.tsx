@@ -4,8 +4,8 @@ import TextInput from "../../components/inputs/TextInput";
 import DateInput from "../../components/inputs/DateInput";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
-import "./HomePage.scss";
 import PassengerCount from "../../components/passengercount/PassengerCount";
+import "./HomePage.scss";
 
 function HomePage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
