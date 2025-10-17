@@ -1,0 +1,30 @@
+.offer {
+  padding: 25px;
+
+  &__title {
+    color: #5e4ae3;
+  }
+
+  &__sale {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0px;
+
+    &__img-text {
+      display: flex;
+      justify-content: flex-start;
+      width: 50%;
+      font-weight: 700;
+
+      &__text {
+        margin-left: 10px;
+      }
+    }
+
+    &__apply {
+      color: #5e4ae3;
+      font-weight: 700;
+      font-size: 18px;
+    }
+  }
+}

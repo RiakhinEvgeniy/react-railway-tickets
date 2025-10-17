@@ -7,7 +7,7 @@
   background-color: rgb(240, 240, 240);
   color: black;
 
-   &__title {
+  &__title {
     color: #5e4ae3;
     margin: 30px;
     font-size: 40px;
@@ -29,10 +29,9 @@
     }
 
     &__view-more {
-      border: 1px solid red;
       margin: 40px 0px;
       width: 106%;
-      color: #5E4AE3;
+      color: #5e4ae3;
       font-weight: 600;
       display: flex;
       justify-content: right;
@@ -40,8 +39,8 @@
 
     &__offers {
       width: 106%;
-      margin: 20px 0px;
-      border: 2px dashed #5E4AE3;
+      // margin: 10px 0px;
+      border: 2px dashed #5e4ae3;
       border-radius: 10px;
     }
   }

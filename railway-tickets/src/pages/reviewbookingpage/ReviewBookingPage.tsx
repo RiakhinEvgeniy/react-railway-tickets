@@ -34,7 +34,10 @@ function ReviewBookingPage() {
         </div>
         <div className="review__wraper__view-more">View More &gt;</div>
         <div className="review__wraper__offers">
-          <Offers />
+          <Offers
+            firstSale={"50% off up to $100 | Use code BOOKNOW"}
+            secondtSale={"20% off | Use code FIRSTTIME"}
+          />
         </div>
       </div>
     </div>
