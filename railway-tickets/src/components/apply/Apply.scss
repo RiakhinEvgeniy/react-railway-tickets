@@ -1,0 +1,49 @@
+.apply-box {
+  display: flex;
+  justify-content: space-between;
+
+  &__code-bag {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 2px solid #808180;
+    border-radius: 10px;
+    width: 40%;
+
+    &__title {
+      margin: 15px 0px;
+    }
+
+    &__field {
+      margin: 10px 0px;
+      padding: 10px 0px;
+      background-color: inherit;
+      border: none;
+      border-bottom: 2px solid #808180;
+      color: black;
+      font-size: 20px;
+      cursor: text;
+    }
+
+    &__field:focus {
+      outline: none;
+    }
+
+    &__field::placeholder {
+      color: #808180;
+      text-indent: 10px;
+    }
+
+    &__btn {
+      margin: 10px 0px;
+      color: black;
+      background-color: inherit;
+      border: 2px solid #5e4ae3;
+      border-radius: 10px;
+      width: 55%;
+      padding: 10px 25px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}

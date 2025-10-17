@@ -1,3 +1,4 @@
+import Apply from "../../components/apply/Apply";
 import BillingInfo from "../../components/billinginfo/BillingInfo";
 import Food from "../../components/food/Food";
 import Offers from "../../components/offers/Offers";
@@ -38,6 +39,9 @@ function ReviewBookingPage() {
             firstSale={"50% off up to $100 | Use code BOOKNOW"}
             secondtSale={"20% off | Use code FIRSTTIME"}
           />
+        </div>
+        <div className="review__wraper__apply-container">
+          <Apply />
         </div>
       </div>
     </div>

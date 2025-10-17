@@ -39,9 +39,13 @@
 
     &__offers {
       width: 106%;
-      // margin: 10px 0px;
       border: 2px dashed #5e4ae3;
       border-radius: 10px;
+    }
+
+    &__apply-container {
+      width: 106%;
+      margin: 25px 0px;
     }
   }
 }
