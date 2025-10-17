@@ -27,5 +27,22 @@
       width: 106%;
       gap: 25px;
     }
+
+    &__view-more {
+      border: 1px solid red;
+      margin: 40px 0px;
+      width: 106%;
+      color: #5E4AE3;
+      font-weight: 600;
+      display: flex;
+      justify-content: right;
+    }
+
+    &__offers {
+      width: 106%;
+      margin: 20px 0px;
+      border: 2px dashed #5E4AE3;
+      border-radius: 10px;
+    }
   }
 }

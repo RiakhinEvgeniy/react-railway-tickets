@@ -1,15 +1,23 @@
 import "./Food.scss";
 
-function Food() {
+interface FoodProps {
+  imageUrl: string;
+  price: string;
+  menu1: string;
+  menu2: string;
+}
+
+function Food({imageUrl, price, menu1, menu2}: FoodProps) {
+  
   return (
     <div className="food">
-      <div className="food__image"></div>
+      <div className="food__image" style={{backgroundImage: `url(${imageUrl})`}}></div>
       <div className="food__info">
         <div className="food__info__title">
-          <span>Paneer Tikka Rice</span>
-          <span>Bowl - Mini</span>
+          <span>{menu1}</span>
+          <span>{menu2}</span>
         </div>
-        <span>$200.00</span>
+        <span>{price}</span>
         <button className="food__btn" type="button">
           Add to Ticket
         </button>

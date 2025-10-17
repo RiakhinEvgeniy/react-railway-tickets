@@ -1,6 +1,8 @@
 import BillingInfo from "../../components/billinginfo/BillingInfo";
 import Food from "../../components/food/Food";
+import Offers from "../../components/offers/Offers";
 import Ticket from "../../components/ticket/Ticket";
+import imagesUrl from "../../data/imagesUrl";
 import "./ReviewBookingPage.scss";
 
 function ReviewBookingPage() {
@@ -11,9 +13,28 @@ function ReviewBookingPage() {
         <Ticket />
         <BillingInfo />
         <div className="review__wraper__food">
-          <Food />
-          <Food />
-          <Food />
+          <Food
+            imageUrl={imagesUrl[0]}
+            price="$200"
+            menu1="Paneer ticka Rice"
+            menu2="Bowl - Mini"
+          />
+          <Food
+            imageUrl={imagesUrl[1]}
+            price="$500"
+            menu1="Grilled Tandoori Chicken"
+            menu2="With dry fruits"
+          />
+          <Food
+            imageUrl={imagesUrl[2]}
+            price="$700"
+            menu1="Aloo Paratha Curd"
+            menu2="Meal (2 pcs)"
+          />
+        </div>
+        <div className="review__wraper__view-more">View More &gt;</div>
+        <div className="review__wraper__offers">
+          <Offers />
         </div>
       </div>
     </div>
