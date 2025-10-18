@@ -5,7 +5,7 @@ function Apply() {
     <div className="apply-box">
       <div className="apply-box__code-bag">
         <h2 className="apply-box__code-bag__title">Apple Code</h2>
-        <input type="text" className="apply-box__code-bag__field" placeholder="Enter code"/>
+        <input name="code" type="text" className="apply-box__code-bag__field" placeholder="Enter code"/>
       </div>
       <div className="apply-box__code-bag">
         <h2 className="apply-box__code-bag__title">Extra Baggage</h2>

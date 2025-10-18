@@ -1,8 +1,11 @@
 import Apply from "../../components/apply/Apply";
 import BillingInfo from "../../components/billinginfo/BillingInfo";
+import SimpleButton from "../../components/buttons/SimpleButton";
 import Food from "../../components/food/Food";
+import Footer from "../../components/footer/Footer";
 import Offers from "../../components/offers/Offers";
 import Ticket from "../../components/ticket/Ticket";
+import TotalCard from "../../components/totalcard/TotalCard";
 import imagesUrl from "../../data/imagesUrl";
 import "./ReviewBookingPage.scss";
 
@@ -43,7 +46,24 @@ function ReviewBookingPage() {
         <div className="review__wraper__apply-container">
           <Apply />
         </div>
+        <div className="review__wraper__total">
+          <TotalCard />
+        </div>
+        <span className="review__wraper__text">
+          Discounts, offers and price concessions will be applied later during
+          payment
+        </span>
+        <div className="review__wraper__btn">
+          <SimpleButton className="blue" text="Book Now"/>
+          <SimpleButton className="transparent" text="Cancel"/>
+        </div>
+        <div className="review__wraper__policy">
+          <span className="review__wraper__policy__info">Cancellation Policy</span>
+          <span className="review__wraper__policy__info">Terms & Conditions</span>
+          <span className="review__wraper__policy__info">Travel Insurance</span>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

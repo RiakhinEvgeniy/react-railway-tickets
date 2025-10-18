@@ -1,6 +1,7 @@
 .apply-box {
   display: flex;
   justify-content: space-between;
+  background-color: #F5F5F5;
 
   &__code-bag {
     display: flex;
@@ -9,6 +10,7 @@
     border: 2px solid #808180;
     border-radius: 10px;
     width: 40%;
+    background-color: white;
 
     &__title {
       margin: 15px 0px;

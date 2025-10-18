@@ -26,7 +26,8 @@
     font-family: inherit;
     font-size: 1rem;
     background-color: #E6E4F3;
-    color: #999;
+    // color: #999;
+    color: black;
 
     &::placeholder {
       color: #90A3BF;
@@ -50,4 +51,15 @@
       box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.25);
     }
   }
+
+  /* Сбрасываем автозаполнение в Chrome */
+.billing-input__field:-webkit-autofill,
+.billing-input__field:-webkit-autofill:hover,
+.billing-input__field:-webkit-autofill:focus,
+.billing-input__field:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #E6E4F3 inset !important; /* тот же фон, что и у поля */
+  -webkit-text-fill-color: black !important; /* текст черного цвета */
+  transition: background-color 5000s ease-in-out 0s !important; /* предотвращает мигание */
+}
+
 }

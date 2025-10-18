@@ -41,11 +41,49 @@
       width: 106%;
       border: 2px dashed #5e4ae3;
       border-radius: 10px;
+      background-color: white;
     }
 
     &__apply-container {
       width: 106%;
-      margin: 25px 0px;
+      margin: 40px 0px;
+      background-color: white;
+    }
+
+    &__total {
+      width: 106%;
+      border: 2px solid #808180;
+      border-radius: 10px;
+      background-color: white;
+      margin: 40px 0px;
+    }
+
+    &__text {
+      color: #808180;
+      font-size: 18px;
+    }
+
+    &__btn {
+      width: 106%;
+      // border: 1px solid red ;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    &__policy {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin-bottom: 40px;
+
+      &__info {
+        color: #808180;
+        font-size: 18px;
+        font-weight: 500;
+        font-size: 20px;
+      }
     }
   }
 }

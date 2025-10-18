@@ -11,6 +11,7 @@ function BillingInfo() {
     <div className="billinginfo">
       <div className="billinginfo__title">
         <h2>Passanger 1</h2>
+        <h2 style={{color: 'red'}}>Сделать форму для этого блока связав с кнопками</h2>
         <span style={{ color: "#808180" }}>Please enter your contact info</span>
       </div>
 
