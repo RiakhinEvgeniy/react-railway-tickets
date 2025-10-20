@@ -4,12 +4,14 @@ import SearchResultsPage from "./pages/searchResultsPage/SearchResultsPage";
 import NotFound from "./pages/notfound/NotFound";
 import MainLayout from "./layouts/MainLayout";
 import ThemeProvider from "./context/ThemeProvider";
-import "./App.css";
 import ReviewBookingPage from "./pages/reviewbookingpage/ReviewBookingPage";
 import PaymentPage from "./pages/paymentpage/PaymentPage";
+import CounterProvider from "./context/CounterProvider";
+import "./App.css";
 
 function App() {
   return (
+    <CounterProvider>
     <ThemeProvider>
       <Routes>
         <Route path="/" element={<MainLayout />}>
@@ -21,6 +23,7 @@ function App() {
         </Route>
       </Routes>
     </ThemeProvider>
+    </CounterProvider>
   );
 }
 

@@ -1,19 +1,19 @@
 import { IoMdPersonAdd } from "react-icons/io";
-import { useState } from "react";
+import { useCounter } from "../../context/CounterOfPass";
 import "./PassengerCount.scss";
 
 function PassengerCount() {
-  const [countPassengers, setCountPassengers] = useState(0);
+  const { valueCounter, increaseCounter, decreaseCounter } = useCounter();
 
-  const addPassenger = () => {
-    if(countPassengers <=6) {
-        setCountPassengers(countPassengers + 1);
+  const increasePassenger = () => {
+    if (valueCounter <= 6) {
+      increaseCounter();
     }
   };
 
   const decreasePassenger = () => {
-    if (countPassengers >= 1) {
-      setCountPassengers(countPassengers - 1);
+    if (valueCounter >= 1) {
+      decreaseCounter();
     }
   };
 
@@ -27,9 +27,9 @@ function PassengerCount() {
       >
         -
       </span>
-      <span className="passcount__count">{countPassengers}</span>
+      <span className="passcount__count">{valueCounter}</span>
       <span
-        onClick={addPassenger}
+        onClick={increasePassenger}
         className="passcount__btn"
         style={{ color: "#5E4AE3" }}
       >
