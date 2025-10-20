@@ -6,6 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 import ThemeProvider from "./context/ThemeProvider";
 import "./App.css";
 import ReviewBookingPage from "./pages/reviewbookingpage/ReviewBookingPage";
+import PaymentPage from "./pages/paymentpage/PaymentPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="search" element={<SearchResultsPage />} />
           <Route path="review" element={<ReviewBookingPage/>}/>
+          <Route path="payment" element={<PaymentPage/>}/>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

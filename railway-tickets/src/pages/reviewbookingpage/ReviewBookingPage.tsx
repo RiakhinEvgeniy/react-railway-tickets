@@ -14,8 +14,12 @@ function ReviewBookingPage() {
     <div className="review">
       <h2 className="review__title">Review your booking</h2>
       <div className="review__wraper">
-        <Ticket />
-        <BillingInfo />
+        <div className="review__wraper__ticket">
+          <Ticket />
+        </div>
+        <div className="review__wraper__ticket">
+          <BillingInfo />
+        </div>
         <div className="review__wraper__food">
           <Food
             imageUrl={imagesUrl[0]}
@@ -54,12 +58,16 @@ function ReviewBookingPage() {
           payment
         </span>
         <div className="review__wraper__btn">
-          <SimpleButton className="blue" text="Book Now"/>
-          <SimpleButton className="transparent" text="Cancel"/>
+          <SimpleButton className="blue" text="Book Now" />
+          <SimpleButton className="transparent" text="Cancel" />
         </div>
         <div className="review__wraper__policy">
-          <span className="review__wraper__policy__info">Cancellation Policy</span>
-          <span className="review__wraper__policy__info">Terms & Conditions</span>
+          <span className="review__wraper__policy__info">
+            Cancellation Policy
+          </span>
+          <span className="review__wraper__policy__info">
+            Terms & Conditions
+          </span>
           <span className="review__wraper__policy__info">Travel Insurance</span>
         </div>
       </div>
