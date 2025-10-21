@@ -9,7 +9,7 @@ interface BillingInputsProps {
   className?: string; // дополнительные CSS классы
   disabled?: boolean; // заблокирован ли input
   required?: boolean; // обязательное ли поле
-  type?: "text" | "email" | "tel"; // тип input
+  type?: "text" | "email" | "tel" | "numeric"; // тип input
 }
 
 function BillingInputs({

@@ -33,12 +33,13 @@
     &::before {
       content: "";
       position: absolute;
-      left: 0;
+      left: 0px;
       top: 50%;
       transform: translateY(-50%);
-      width: 16px;
-      height: 16px;
-      border: 2px solid #ccc;
+      width: 17px;
+      height: 17px;
+      // border: 2px solid #ccc;
+      border: 2px solid gray;
       border-radius: 50%;
       background: transparent; // Прозрачный фон для темной темы
       transition: all 0.2s ease;
@@ -51,8 +52,8 @@
       left: 4px;
       top: 50%;
       transform: translateY(-50%);
-      width: 8px;
-      height: 8px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: #1e90ff;
       opacity: 0;
@@ -64,6 +65,7 @@
   &__input:checked + &__label {
     &::before {
       border-color: #1e90ff;
+      // border-color: blue;
     }
 
     &::after {
