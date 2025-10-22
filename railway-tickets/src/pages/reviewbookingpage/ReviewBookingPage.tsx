@@ -4,6 +4,7 @@ import SimpleButton from "../../components/buttons/SimpleButton";
 import Food from "../../components/food/Food";
 import Footer from "../../components/footer/Footer";
 import Offers from "../../components/offers/Offers";
+import Policy from "../../components/policy/Policy";
 import Ticket from "../../components/ticket/Ticket";
 import TotalCard from "../../components/totalcard/TotalCard";
 import imagesUrl from "../../data/imagesUrl";
@@ -61,15 +62,7 @@ function ReviewBookingPage() {
           <SimpleButton className="blue" text="Book Now" />
           <SimpleButton className="transparent" text="Cancel" />
         </div>
-        <div className="review__wraper__policy">
-          <span className="review__wraper__policy__info">
-            Cancellation Policy
-          </span>
-          <span className="review__wraper__policy__info">
-            Terms & Conditions
-          </span>
-          <span className="review__wraper__policy__info">Travel Insurance</span>
-        </div>
+        <Policy />
       </div>
       <Footer />
     </div>

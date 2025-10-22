@@ -11,6 +11,7 @@ import PayInput from "../../components/payinput/PayInput";
 import "./PaymentPage.scss";
 import SimpleButton from "../../components/buttons/SimpleButton";
 import Footer from "../../components/footer/Footer";
+import Policy from "../../components/policy/Policy";
 
 type Pay = "credit" | "paypal" | "bitcoin";
 
@@ -46,7 +47,9 @@ function PaymentPage() {
           <TotalCard />
         </div>
         <div className="payment__wraper__pay-container">
-          <h2 className="payment__wraper__pay-container__pay-title">Payment Method</h2>
+          <h2 className="payment__wraper__pay-container__pay-title">
+            Payment Method
+          </h2>
           <span className="payment__wraper__text">
             Please enter your payment method
           </span>
@@ -99,17 +102,7 @@ function PaymentPage() {
             <SimpleButton className="transparent" text="Cancel" />
           </div>
         </div>
-        <div className="payment__wraper__policy">
-          <span className="payment__wraper__policy__info">
-            Cancellation Policy
-          </span>
-          <span className="payment__wraper__policy__info">
-            Terms & Conditions
-          </span>
-          <span className="payment__wraper__policy__info">
-            Travel Insurance
-          </span>
-        </div>
+        <Policy />
       </div>
       <Footer />
     </div>

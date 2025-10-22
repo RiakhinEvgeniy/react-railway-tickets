@@ -100,24 +100,9 @@
         &__security {
           display: flex;
           justify-content: space-around;
-          // border: 1px solid red;
           padding: 20px;
           width: 40%;
         }
-      }
-    }
-
-    &__policy {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      margin-bottom: 40px;
-
-      &__info {
-        color: #808180;
-        font-size: 18px;
-        font-weight: 500;
-        font-size: 20px;
       }
     }
   }
