@@ -39,10 +39,28 @@
 
     // Стилизация календарного индикатора
     &::-webkit-calendar-picker-indicator {
-      filter: invert(0.4);
+      filter: invert(0.9);
       cursor: pointer;
     }
   }
+
+  /* Переопределяем цвет всех частей даты */
+.date-input__field::-webkit-datetime-edit {
+  color: black; /* общий цвет текста */
+}
+
+/* Отдельно задаем для каждой части, чтобы точно перекрыть системные стили */
+.date-input__field::-webkit-datetime-edit-year-field,
+.date-input__field::-webkit-datetime-edit-month-field,
+.date-input__field::-webkit-datetime-edit-day-field {
+  color: black;
+}
+
+/* Цвет разделителей (например, дефисов или точек) между частями даты */
+.date-input__field::-webkit-datetime-edit-text {
+  color: black;
+}
+
 
   // Специальный стиль для обратной даты (return date)
   &--return &__field {

@@ -16,8 +16,6 @@ function SearchResultsPage() {
 
   const [formData, setFormData] = useState<FormData>(initialFormData);
 
-  console.log("Form data from searchPage: ", formData);
-
   const navigate = useNavigate();
 
   const handleTripChange = (value: TripType) =>
@@ -94,7 +92,7 @@ function SearchResultsPage() {
               required
             />
 
-            {formData.tripType === "round" && (
+            {formData.tripType !== "oneway" && (
               <DateInput
                 label=""
                 value={formData.returnDate}

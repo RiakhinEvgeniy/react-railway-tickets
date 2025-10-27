@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import PassengerCount from "../../components/passengercount/PassengerCount";
 import { useDispatch } from "react-redux";
-import "./HomePage.scss";
 import { setForm, type FormData } from "../../redux/formSlice";
 import type { AppDispatch } from "../../redux/storeForm";
+import "./HomePage.scss";
 
 function HomePage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
@@ -26,13 +26,6 @@ function HomePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // предотвращаю перезагрузку страницы
-    console.log({
-      tripType,
-      fromCity,
-      toCity,
-      departureDate,
-      returnDate: tripType === "round" ? returnDate : null,
-    });
 
     const newDataForm: FormData = {
       tripType: tripType,
@@ -43,8 +36,6 @@ function HomePage() {
     }
 
     dispatch(setForm(newDataForm));
-    console.log("New object from dispatch: ", newDataForm);
-    
 
     changeTheme();
     navigate("/search");
