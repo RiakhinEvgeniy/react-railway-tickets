@@ -36,7 +36,7 @@ function TextInput({
     };
 
   // 3. Обработчик изменения значения
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {    
     onChange(e.target.value);
   }
 

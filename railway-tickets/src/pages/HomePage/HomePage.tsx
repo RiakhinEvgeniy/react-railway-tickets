@@ -5,7 +5,10 @@ import DateInput from "../../components/inputs/DateInput";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import PassengerCount from "../../components/passengercount/PassengerCount";
+import { useDispatch } from "react-redux";
 import "./HomePage.scss";
+import { setForm, type FormData } from "../../redux/formSlice";
+import type { AppDispatch } from "../../redux/storeForm";
 
 function HomePage() {
   const [tripType, setTripType] = useState<"oneway" | "round">("round");
@@ -15,6 +18,7 @@ function HomePage() {
   const [returnDate, setReturnDate] = useState("");
   const { changeTheme } = useTheme();
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleTripChange = (value: string) => {
     setTripType(value as "oneway" | "round");
@@ -29,6 +33,18 @@ function HomePage() {
       departureDate,
       returnDate: tripType === "round" ? returnDate : null,
     });
+
+    const newDataForm: FormData = {
+      tripType: tripType,
+      fromCity: fromCity,
+      toCity: toCity,
+      departureDate: departureDate,
+      returnDate: returnDate,
+    }
+
+    dispatch(setForm(newDataForm));
+    console.log("New object from dispatch: ", newDataForm);
+    
 
     changeTheme();
     navigate("/search");
