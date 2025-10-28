@@ -6,23 +6,27 @@ import GeneralCard from "../../components/generalcard/GeneralCard";
 import Footer from "../../components/footer/Footer";
 import PassengerCount from "../../components/passengercount/PassengerCount";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../redux/storeForm";
-import type { FormData, TripType } from "../../redux/formSlice";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/storeForm";
+import { setTripType, type FormData, type TripType } from "../../redux/formSlice";
 import "./SearchResultsPage.scss";
 
 function SearchResultsPage() {
   const initialFormData = useSelector((state: RootState) => state.form);
-
   const [formData, setFormData] = useState<FormData>(initialFormData);
-
+  const dispatchTripType = useDispatch<AppDispatch>()
   const navigate = useNavigate();
 
-  const handleTripChange = (value: TripType) =>
+  const handleTripChange = (value: TripType) => {
     setFormData((prev) => ({
       ...prev,
       tripType: value,
     }));
+
+    const trip: TripType = value;
+    dispatchTripType(setTripType(trip))
+  }
+  
 
   const handleInputChange = (name: keyof FormData, value: string | null) => {
     setFormData((prev) => ({
@@ -53,7 +57,7 @@ function SearchResultsPage() {
 
             <RadioButton
               name="tripType"
-              value="oneway"
+              value={formData.tripType}
               checked={formData.tripType === "oneway"}
               onChange={() => handleTripChange('oneway')}
             >

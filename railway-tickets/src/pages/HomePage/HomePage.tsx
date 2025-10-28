@@ -5,38 +5,47 @@ import DateInput from "../../components/inputs/DateInput";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import PassengerCount from "../../components/passengercount/PassengerCount";
-import { useDispatch } from "react-redux";
-import { setForm, type FormData } from "../../redux/formSlice";
-import type { AppDispatch } from "../../redux/storeForm";
+import { useDispatch, useSelector } from "react-redux";
+import { setForm, setTripType, type FormData, type TripType } from "../../redux/formSlice";
+import type { AppDispatch, RootState } from "../../redux/storeForm";
 import "./HomePage.scss";
 
 function HomePage() {
-  const [tripType, setTripType] = useState<"oneway" | "round">("round");
-  const [fromCity, setFromCity] = useState("");
-  const [toCity, setToCity] = useState("");
-  const [departureDate, setDepartureDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
+  const initialFormData = useSelector((state: RootState) => state.form);
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const { changeTheme } = useTheme();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleTripChange = (value: string) => {
-    setTripType(value as "oneway" | "round");
+  const handleTripChange = (value: TripType) => {
+    setFormData((prev) => ({
+      ...prev,
+      tripType: value,
+    }));
+
+    const trip: TripType = value;
+    dispatch(setTripType(trip))
+  }
+
+    const handleInputChange = (name: keyof FormData, value: string | null) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // предотвращаю перезагрузку страницы
 
     const newDataForm: FormData = {
-      tripType: tripType,
-      fromCity: fromCity,
-      toCity: toCity,
-      departureDate: departureDate,
-      returnDate: returnDate,
-    }
+      tripType: formData.tripType,
+      fromCity: formData.fromCity,
+      toCity: formData.toCity,
+      departureDate: formData.departureDate,
+      returnDate: formData.returnDate,
+    };
 
     dispatch(setForm(newDataForm));
-
     changeTheme();
     navigate("/search");
   };
@@ -53,18 +62,18 @@ function HomePage() {
           <div className="ticket-form__trip-type">
             <RadioButton
               name="tripType"
-              value="round"
-              checked={tripType === "round"}
-              onChange={handleTripChange}
+              value={formData.tripType}
+              checked={formData.tripType === "round"}
+              onChange={() => handleTripChange("round")}
             >
               Round Trip
             </RadioButton>
 
             <RadioButton
               name="tripType"
-              value="oneway"
-              checked={tripType === "oneway"}
-              onChange={handleTripChange}
+              value={formData.tripType}
+              checked={formData.tripType === "oneway"}
+              onChange={() => handleTripChange("oneway")}
             >
               One Way
             </RadioButton>
@@ -76,8 +85,8 @@ function HomePage() {
           <div className="ticket-form__cities">
             <TextInput
               label="Departure:"
-              value={fromCity}
-              onChange={setFromCity}
+              value={formData.fromCity}
+              onChange={(value) => handleInputChange('fromCity', value)}
               placeholder="Your City / Station"
               name="fromCity"
               required
@@ -85,8 +94,8 @@ function HomePage() {
 
             <TextInput
               label="Arrival:"
-              value={toCity}
-              onChange={setToCity}
+              value={formData.toCity}
+              onChange={(value) => handleInputChange('toCity', value)}
               placeholder="Where to?"
               name="toCity"
               required
@@ -95,17 +104,17 @@ function HomePage() {
           <div className="ticket-form__dates">
             <DateInput
               label="Pick your lucky day"
-              value={departureDate}
-              onChange={setDepartureDate}
+              value={formData.departureDate}
+              onChange={(value) => handleInputChange('departureDate', value)}
               name="departureDate"
               required
             />
 
-            {tripType === "round" && (
+            {formData.tripType === "round" && (
               <DateInput
                 label=""
-                value={returnDate}
-                onChange={setReturnDate}
+                value={formData.returnDate}
+                onChange={(value) => handleInputChange('returnDate', value)}
                 name="returnDate"
                 isReturnDate={true}
               />

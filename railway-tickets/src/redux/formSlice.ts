@@ -11,7 +11,7 @@ export interface FormData {
 }
 
 const initialState: FormData = {
-    tripType: "",
+    tripType: "round",
     fromCity: "",
     toCity: "",
     departureDate: "",
@@ -28,10 +28,14 @@ const formSlice = createSlice({
             state.departureDate = action.payload.departureDate;
             state.toCity = action.payload.toCity;
             state.returnDate = action.payload.returnDate;
+        },
+
+        setTripType: (state, action: PayloadAction<TripType>) => {
+            state.tripType = action.payload;
         }
     }
 });
 
-export const {setForm} = formSlice.actions;
+export const {setForm, setTripType} = formSlice.actions;
 
 export default formSlice.reducer;
