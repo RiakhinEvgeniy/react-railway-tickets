@@ -1,0 +1,9 @@
+{
+    "train": [
+        {
+            "id": 1,
+            "fromCity": "Odessa",
+            "toCity": "New York"
+        }
+    ]
+}
