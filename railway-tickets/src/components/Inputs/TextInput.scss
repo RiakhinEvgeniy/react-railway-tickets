@@ -1,6 +1,7 @@
 .text-input {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   &__label {
     display: flex;
@@ -55,14 +56,30 @@
     }
   }
 
-      /* Сбрасываем автозаполнение в Chrome */
-.text-input__field:-webkit-autofill,
-.text-input__field:-webkit-autofill:hover,
-.text-input__field:-webkit-autofill:focus,
-.text-input__field:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #E6E4F3 inset !important; /* тот же фон, что и у поля */
-  -webkit-text-fill-color: black !important; /* текст черного цвета */
-  transition: background-color 5000s ease-in-out 0s !important; /* предотвращает мигание */
-}
+  /* Сбрасываем автозаполнение в Chrome */
+  .text-input__field:-webkit-autofill,
+  .text-input__field:-webkit-autofill:hover,
+  .text-input__field:-webkit-autofill:focus,
+  .text-input__field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #e6e4f3 inset !important; /* тот же фон, что и у поля */
+    -webkit-text-fill-color: black !important; /* текст черного цвета */
+    transition: background-color 5000s ease-in-out 0s !important; /* предотвращает мигание */
+  }
 
+  &__drop-down {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    color: black;
+    margin-top: 10px;
+    border-radius: 4px;
+    padding-left: 0.5rem;
+    z-index: 10;
+
+    &__cities {
+      margin: 4px 0px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
 }

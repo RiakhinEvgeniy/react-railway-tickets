@@ -9,6 +9,7 @@ import PaymentPage from "./pages/paymentpage/PaymentPage";
 import CounterProvider from "./context/CounterProvider";
 import "./App.css";
 import SuccessPage from "./pages/successpage/SuccessPage";
+import TestComponent from "./components/TestComponent";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="review" element={<ReviewBookingPage/>}/>
           <Route path="payment" element={<PaymentPage/>}/>
           <Route path="success" element={<SuccessPage/>}/>
+          <Route path="test" element={<TestComponent/>}/>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
