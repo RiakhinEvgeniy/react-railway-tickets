@@ -6,8 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import PassengerCount from "../../components/passengercount/PassengerCount";
 import { useDispatch, useSelector } from "react-redux";
-import { setForm, setTripType, type FormData, type TripType } from "../../redux/formSlice";
-import type { AppDispatch, RootState } from "../../redux/storeForm";
+import {
+  setForm,
+  setTripType,
+  type FormData,
+  type TripType,
+} from "../../redux/formSlice";
+import type { AppDispatch, RootState } from "../../redux/store";
 import "./HomePage.scss";
 
 function HomePage() {
@@ -24,10 +29,10 @@ function HomePage() {
     }));
 
     const trip: TripType = value;
-    dispatch(setTripType(trip))
-  }
+    dispatch(setTripType(trip));
+  };
 
-    const handleInputChange = (name: keyof FormData, value: string | null) => {
+  const handleInputChange = (name: keyof FormData, value: string | null) => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -86,7 +91,7 @@ function HomePage() {
             <TextInput
               label="Departure:"
               value={formData.fromCity}
-              onChange={(value) => handleInputChange('fromCity', value)}
+              onChange={(value) => handleInputChange("fromCity", value)}
               placeholder="Your City / Station"
               name="fromCity"
               required
@@ -95,7 +100,7 @@ function HomePage() {
             <TextInput
               label="Arrival:"
               value={formData.toCity}
-              onChange={(value) => handleInputChange('toCity', value)}
+              onChange={(value) => handleInputChange("toCity", value)}
               placeholder="Where to?"
               name="toCity"
               required
@@ -105,7 +110,7 @@ function HomePage() {
             <DateInput
               label="Pick your lucky day"
               value={formData.departureDate}
-              onChange={(value) => handleInputChange('departureDate', value)}
+              onChange={(value) => handleInputChange("departureDate", value)}
               name="departureDate"
               required
             />
@@ -114,7 +119,7 @@ function HomePage() {
               <DateInput
                 label=""
                 value={formData.returnDate}
-                onChange={(value) => handleInputChange('returnDate', value)}
+                onChange={(value) => handleInputChange("returnDate", value)}
                 name="returnDate"
                 isReturnDate={true}
               />

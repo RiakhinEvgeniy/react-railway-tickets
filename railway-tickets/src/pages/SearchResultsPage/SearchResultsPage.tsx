@@ -7,14 +7,18 @@ import Footer from "../../components/footer/Footer";
 import PassengerCount from "../../components/passengercount/PassengerCount";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, RootState } from "../../redux/storeForm";
-import { setTripType, type FormData, type TripType } from "../../redux/formSlice";
+import type { AppDispatch, RootState } from "../../redux/store";
+import {
+  setTripType,
+  type FormData,
+  type TripType,
+} from "../../redux/formSlice";
 import "./SearchResultsPage.scss";
 
 function SearchResultsPage() {
   const initialFormData = useSelector((state: RootState) => state.form);
   const [formData, setFormData] = useState<FormData>(initialFormData);
-  const dispatchTripType = useDispatch<AppDispatch>()
+  const dispatchTripType = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const handleTripChange = (value: TripType) => {
@@ -24,9 +28,8 @@ function SearchResultsPage() {
     }));
 
     const trip: TripType = value;
-    dispatchTripType(setTripType(trip))
-  }
-  
+    dispatchTripType(setTripType(trip));
+  };
 
   const handleInputChange = (name: keyof FormData, value: string | null) => {
     setFormData((prev) => ({
@@ -50,7 +53,7 @@ function SearchResultsPage() {
               name="tripType"
               value={formData.tripType}
               checked={formData.tripType === "round"}
-              onChange={() => handleTripChange('round')}
+              onChange={() => handleTripChange("round")}
             >
               Round Trip
             </RadioButton>
@@ -59,7 +62,7 @@ function SearchResultsPage() {
               name="tripType"
               value={formData.tripType}
               checked={formData.tripType === "oneway"}
-              onChange={() => handleTripChange('oneway')}
+              onChange={() => handleTripChange("oneway")}
             >
               One Way
             </RadioButton>
@@ -91,7 +94,7 @@ function SearchResultsPage() {
             <DateInput
               label="Pick your lucky day"
               value={formData.departureDate}
-              onChange={(value) => handleInputChange('departureDate', value)}
+              onChange={(value) => handleInputChange("departureDate", value)}
               name="departureDate"
               required
             />
@@ -100,7 +103,7 @@ function SearchResultsPage() {
               <DateInput
                 label=""
                 value={formData.returnDate}
-                onChange={(value) => handleInputChange('returnDate', value)}
+                onChange={(value) => handleInputChange("returnDate", value)}
                 name="returnDate"
                 isReturnDate={true}
               />

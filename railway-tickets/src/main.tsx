@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import { Provider } from "react-redux";
-import { storeForm } from "./redux/storeForm.ts";
+import { storeForm } from "./redux/store.ts";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
