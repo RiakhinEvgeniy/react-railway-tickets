@@ -7,7 +7,7 @@ function TestComponent() {
   const [text, setText] = useState("");
   const [isClick, setIsClick] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
-  const citiesData = useSelector((state: RootState) => state.cityData.cities); // первый sities из store.ts; второй из sitiesSlice
+  const citiesData = useSelector((state: RootState) => state.cityData.cities); 
 
   function handleTextInput(e: React.ChangeEvent<HTMLInputElement>) {
     setIsClick(true);

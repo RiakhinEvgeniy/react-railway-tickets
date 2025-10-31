@@ -3,7 +3,8 @@
     { "id": "1", "name": "Odessa", "alias": "ODA" },
     { "id": "2", "name": "Berlin", "alias": "BRL" },
     { "id": "3", "name": "New-York", "alias": "NYW" },
-    { "id": "4", "name": "Kiev", "alias": "KIV" }
+    { "id": "4", "name": "Kiev", "alias": "KIV" },
+    { "id": "5", "name": "Wolfsburg", "alias": "WRG" }
   ],
   "tickets": [
     {

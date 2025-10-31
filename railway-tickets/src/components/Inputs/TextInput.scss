@@ -26,7 +26,6 @@
     font-family: inherit;
     font-size: 1rem;
     background-color: white;
-    // color: #999;
     color: black;
 
     &__lightgray {
@@ -41,6 +40,7 @@
       outline: none;
       border-color: #1e90ff;
       box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.25);
+      caret-color: black;
     }
 
     &:disabled {
@@ -71,10 +71,12 @@
     flex-direction: column;
     background-color: lightgrey;
     color: black;
-    margin-top: 10px;
+    margin-top: 15px;
     border-radius: 4px;
     padding-left: 0.5rem;
     z-index: 10;
+    // max-height: 150px;
+    // overflow: auto;
 
     &__cities {
       margin: 4px 0px;

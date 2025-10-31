@@ -1,10 +1,10 @@
 // TextInput.tsx
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, RootState } from "../../redux/store";
-import "./TextInput.scss";
-import { fetchCities } from "../../redux/citiesSlice";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../redux/store';
+import './TextInput.scss';
+import { fetchCities } from '../../redux/citiesSlice';
 
 // 1. Определяем интерфейс для пропсов
 interface TextInputProps {
@@ -16,7 +16,7 @@ interface TextInputProps {
   className?: string; // дополнительные CSS классы
   disabled?: boolean; // заблокирован ли input
   required?: boolean; // обязательное ли поле
-  type?: "text" | "email" | "tel"; // тип input
+  type?: 'text' | 'email' | 'tel'; // тип input
 }
 
 // 2. Создаем функциональный компонент
@@ -24,21 +24,22 @@ function TextInput({
   label,
   value,
   onChange,
-  placeholder = "",
+  placeholder = '',
   name,
-  className = "",
+  className = '',
   disabled = false,
   required = false,
-  type = "text",
+  type = 'text',
 }: TextInputProps) {
   const location = useLocation();
-  const homePage = location.pathname === "/";
+  const homePage = location.pathname === '/';
   const [isClick, setIsClick] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
-  const citiesData = useSelector((state: RootState) => state.cityData.cities);
+  const citiesData = useSelector((state: RootState) => state.cityData.cities); //cityData из store.ts; cities из sitiesSlice
+  const isLoading = useSelector((state: RootState) => state.cityData.isLoading);
 
   const textInputStyle = {
-    color: homePage ? "white" : "black",
+    color: homePage ? 'white' : 'black',
   };
 
   useEffect(() => {
@@ -62,7 +63,11 @@ function TextInput({
   }
 
   // 4. Генерируем уникальный id для связи label и input
-  const inputId = `input-${name || label.toLowerCase().replace(/\s+/g, "-")}`;
+  const inputId = `input-${name || label.toLowerCase().replace(/\s+/g, '-')}`;
+
+  if (!isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={`text-input ${className}`}>
@@ -87,7 +92,7 @@ function TextInput({
         className={`text-input__field text-input__field__${className}`}
       />
 
-      <div className="text-input__drop-down">
+      {/* <div className="text-input__drop-down">
         {isClick &&
           value &&
           sortedCities.map((city) => (
@@ -99,7 +104,21 @@ function TextInput({
               {city.name}
             </span>
           ))}
-      </div>
+      </div> */}
+
+      {isClick && value && (
+        <div className="text-input__drop-down">
+          {sortedCities.map((city) => (
+            <span
+              className="text-input__drop-down__cities"
+              key={city.id}
+              onClick={() => handleCityClick(city.name)}
+            >
+              {city.name}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
