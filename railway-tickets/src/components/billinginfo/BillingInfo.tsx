@@ -1,37 +1,37 @@
-import { useState } from "react";
-import BillingInputs from "../inputs/BillingInputs";
-import "./BillingInfo.scss";
+import BillingInputs from '../inputs/BillingInputs';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
+import './BillingInfo.scss';
 
 function BillingInfo() {
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [birth, setBirth] = useState("");
+  const passengerData = useSelector((state: RootState) => state.passengerData);
+
   return (
     <div className="billinginfo">
       <div className="billinginfo__title">
         <h2>Passanger 1</h2>
-        <h2 style={{color: 'red'}}>Сделать форму для этого блока связав с кнопками</h2>
-        <span style={{ color: "#808180" }}>Please enter your contact info</span>
+        <span style={{ color: '#808180' }}>Please enter your contact info</span>
       </div>
 
       <div className="billinginfo__name-phone">
         <BillingInputs
           label="Full Name"
           type="text"
-          value={name}
-          onChange={setName}
+          value={passengerData.passenger.fullName}
+          // onChange={setName}
           placeholder="Your name"
-          name="fromName"
+          autocomplete="name"
+          name="fullName"
           required
         />
         <BillingInputs
           label="Phone Number"
           type="tel"
-          value={phoneNumber}
-          onChange={setPhoneNumber}
+          value={passengerData.passenger.phoneNumber}
+          // onChange={setPhoneNumber}
           placeholder="+049"
-          name="fromPhoneNumber"
+          autocomplete="tel"
+          name="phoneNumber"
           required
         />
       </div>
@@ -39,19 +39,21 @@ function BillingInfo() {
         <BillingInputs
           label="Email"
           type="email"
-          value={email}
-          onChange={setEmail}
+          value={passengerData.passenger.email}
+          // onChange={setEmail}
           placeholder="email@company.com"
-          name="fromEmail"
+          autocomplete="email"
+          name="email"
           required
         />
         <BillingInputs
           label="Date of birth"
           type="text"
-          value={birth}
-          onChange={setBirth}
+          value={passengerData.passenger.dateOfBirth}
+          // onChange={setBirth}
           placeholder="12.12.1970"
-          name="fromBirth"
+          autocomplete="dateOfBirth"
+          name="dateOfBirth"
           required
         />
       </div>

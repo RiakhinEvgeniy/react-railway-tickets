@@ -8,7 +8,7 @@
   ],
   "tickets": [
     {
-      "id": "153464734",
+      "id": "1",
       "transportCompany": "Express",
       "schedule": "1",
       "totalTime": "8",
@@ -18,8 +18,8 @@
         "station": "Berlin"
       },
       "ETD": {
-        "day": "25 november",
-        "time": "12:00",
+        "day": "24 november",
+        "time": "19:40",
         "station": "Odessa"
       },
       "classes": [
@@ -29,18 +29,18 @@
       ]
     },
     {
-      "id": "153464734",
-      "transportCompany": "Express",
+      "id": "2",
+      "transportCompany": "UA_Company",
       "schedule": "1",
       "totalTime": "8",
       "ETA": {
         "day": "24 november",
-        "time": "11:40",
+        "time": "15:40",
         "station": "Berlin"
       },
       "ETD": {
-        "day": "25 november",
-        "time": "12:00",
+        "day": "24 november",
+        "time": "23:40",
         "station": "Odessa"
       },
       "classes": [
@@ -50,19 +50,61 @@
       ]
     },
     {
-      "id": "153464734",
+      "id": "3",
       "transportCompany": "Express",
       "schedule": "1",
-      "totalTime": "8",
+      "totalTime": "10",
       "ETA": {
         "day": "24 november",
-        "time": "11:40",
+        "time": "17:00",
         "station": "Berlin"
       },
       "ETD": {
         "day": "25 november",
-        "time": "12:00",
+        "time": "03:00",
         "station": "Odessa"
+      },
+      "classes": [
+        { "type": "3A", "available": 446, "price": 900 },
+        { "type": "2A", "available": 256, "price": 1000 },
+        { "type": "1A", "available": 36, "price": 1200 }
+      ]
+    },
+    {
+      "id": "5",
+      "transportCompany": "NordTransportation",
+      "schedule": "1",
+      "totalTime": "10",
+      "ETA": {
+        "day": "25 november",
+        "time": "19:00",
+        "station": "Kiev"
+      },
+      "ETD": {
+        "day": "26 november",
+        "time": "05:00",
+        "station": "Odessa"
+      },
+      "classes": [
+        { "type": "3A", "available": 446, "price": 900 },
+        { "type": "2A", "available": 256, "price": 1000 },
+        { "type": "1A", "available": 36, "price": 1200 }
+      ]
+    },
+    {
+      "id": "6",
+      "transportCompany": "SouthTransportation",
+      "schedule": "1",
+      "totalTime": "10",
+      "ETA": {
+        "day": "25 november",
+        "time": "9:00",
+        "station": "Odessa"
+      },
+      "ETD": {
+        "day": "26 november",
+        "time": "19:00",
+        "station": "Kiev"
       },
       "classes": [
         { "type": "3A", "available": 446, "price": 900 },

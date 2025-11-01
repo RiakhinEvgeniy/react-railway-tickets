@@ -1,35 +1,45 @@
-import "./BillingInputs.scss";
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../redux/store';
+import {
+  updatePassengerField,
+  type PassengerInfo,
+} from '../../redux/passengerSlice';
+import './BillingInputs.scss';
 
 interface BillingInputsProps {
   label: string; // текст лейбла
   value: string; // текущее значение
-  onChange: (value: string) => void; // функция изменения значения
+  // onChange: (value: string) => void; // функция изменения значения
   placeholder?: string; // плейсхолдер (опционально)
-  name?: string; // name атрибут (опционально)
+  autocomplete?: string;
+  name: keyof PassengerInfo; // name атрибут (опционально)
   className?: string; // дополнительные CSS классы
   disabled?: boolean; // заблокирован ли input
   required?: boolean; // обязательное ли поле
-  type?: "text" | "email" | "tel" | "numeric"; // тип input
+  type?: 'text' | 'email' | 'tel' | 'numeric'; // тип input
 }
 
 function BillingInputs({
   label,
   value,
-  onChange,
-  placeholder = "",
+  // onChange,
+  placeholder = '',
+  autocomplete,
   name,
-  className = "",
+  className = '',
   disabled = false,
   required = false,
   type,
 }: BillingInputsProps) {
+  const dispatch = useDispatch<AppDispatch>();
   // 3. Обработчик изменения значения
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    onChange(e.target.value);
+    // onChange(e.target.value);
+    dispatch(updatePassengerField({ field: name, value: e.target.value }));
   }
 
   // 4. Генерируем уникальный id для связи label и input
-  const inputId = `billing-${name || label.toLowerCase().replace(/\s+/g, "-")}`;
+  const inputId = `billing-${name || label.toLowerCase().replace(/\s+/g, '-')}`;
 
   return (
     <div className={`billing-input ${className}`}>
@@ -44,6 +54,7 @@ function BillingInputs({
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        autoComplete={autocomplete}
         disabled={disabled}
         required={required}
         className="billing-input__field"

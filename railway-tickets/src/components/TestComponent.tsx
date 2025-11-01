@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCities } from "../redux/citiesSlice";
-import type { AppDispatch, RootState } from "../redux/store";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCities } from '../redux/citiesSlice';
+import type { AppDispatch, RootState } from '../redux/store';
 
 function TestComponent() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [isClick, setIsClick] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
-  const citiesData = useSelector((state: RootState) => state.cityData.cities); 
+  const citiesData = useSelector((state: RootState) => state.cityData.cities);
 
   function handleTextInput(e: React.ChangeEvent<HTMLInputElement>) {
     setIsClick(true);
@@ -30,7 +30,7 @@ function TestComponent() {
   }, [dispatch]);
 
   return (
-    <div style={{ color: "black" }}>
+    <div style={{ color: 'black' }}>
       <label htmlFor="test">TEST: </label>
       <input
         type="text"
@@ -41,12 +41,13 @@ function TestComponent() {
       />
 
       <div>
-        {(isClick && text) &&
+        {isClick &&
+          text &&
           sortedCities.map((city) => (
             <h2
               key={city.id}
               onClick={handleClickOnText}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
             >
               {city.name}
             </h2>
