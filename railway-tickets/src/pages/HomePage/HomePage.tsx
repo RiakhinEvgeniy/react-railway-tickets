@@ -1,22 +1,22 @@
-import { useState } from "react";
-import RadioButton from "../../components/buttons/RadioButton";
-import TextInput from "../../components/inputs/TextInput";
-import DateInput from "../../components/inputs/DateInput";
-import { useNavigate } from "react-router-dom";
-import { useTheme } from "../../context/ThemeContext";
-import PassengerCount from "../../components/passengercount/PassengerCount";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from 'react';
+import RadioButton from '../../components/buttons/RadioButton';
+import TextInput from '../../components/inputs/TextInput';
+import DateInput from '../../components/inputs/DateInput';
+import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
+import PassengerCount from '../../components/passengercount/PassengerCount';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setForm,
   setTripType,
   type FormData,
   type TripType,
-} from "../../redux/formSlice";
-import type { AppDispatch, RootState } from "../../redux/store";
-import "./HomePage.scss";
+} from '../../redux/formSlice';
+import type { AppDispatch, RootState } from '../../redux/store';
+import './HomePage.scss';
 
 function HomePage() {
-  const initialFormData = useSelector((state: RootState) => state.form);
+  const initialFormData = useSelector((state: RootState) => state.formData);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const { changeTheme } = useTheme();
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function HomePage() {
 
     dispatch(setForm(newDataForm));
     changeTheme();
-    navigate("/search");
+    navigate('/search');
   };
 
   return (
@@ -68,8 +68,8 @@ function HomePage() {
             <RadioButton
               name="tripType"
               value={formData.tripType}
-              checked={formData.tripType === "round"}
-              onChange={() => handleTripChange("round")}
+              checked={formData.tripType === 'round'}
+              onChange={() => handleTripChange('round')}
             >
               Round Trip
             </RadioButton>
@@ -77,8 +77,8 @@ function HomePage() {
             <RadioButton
               name="tripType"
               value={formData.tripType}
-              checked={formData.tripType === "oneway"}
-              onChange={() => handleTripChange("oneway")}
+              checked={formData.tripType === 'oneway'}
+              onChange={() => handleTripChange('oneway')}
             >
               One Way
             </RadioButton>
@@ -91,7 +91,7 @@ function HomePage() {
             <TextInput
               label="Departure:"
               value={formData.fromCity}
-              onChange={(value) => handleInputChange("fromCity", value)}
+              onChange={(value) => handleInputChange('fromCity', value)}
               placeholder="Your City / Station"
               name="fromCity"
               required
@@ -100,7 +100,7 @@ function HomePage() {
             <TextInput
               label="Arrival:"
               value={formData.toCity}
-              onChange={(value) => handleInputChange("toCity", value)}
+              onChange={(value) => handleInputChange('toCity', value)}
               placeholder="Where to?"
               name="toCity"
               required
@@ -110,16 +110,16 @@ function HomePage() {
             <DateInput
               label="Pick your lucky day"
               value={formData.departureDate}
-              onChange={(value) => handleInputChange("departureDate", value)}
+              onChange={(value) => handleInputChange('departureDate', value)}
               name="departureDate"
               required
             />
 
-            {formData.tripType === "round" && (
+            {formData.tripType === 'round' && (
               <DateInput
                 label=""
                 value={formData.returnDate}
-                onChange={(value) => handleInputChange("returnDate", value)}
+                onChange={(value) => handleInputChange('returnDate', value)}
                 name="returnDate"
                 isReturnDate={true}
               />

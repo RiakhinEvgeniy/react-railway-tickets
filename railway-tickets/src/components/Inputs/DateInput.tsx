@@ -1,7 +1,10 @@
 // DateInput.tsx
-import React from "react";
+import React, { useEffect } from "react";
 import "./DateInput.scss";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchTickets } from "../../redux/ticketsSlice";
+import type { AppDispatch } from "../../redux/store";
 
 // 1. Определяем интерфейс для пропсов
 interface DateInputProps {
@@ -45,6 +48,11 @@ function DateInput({
 }: DateInputProps) {
   const location = useLocation();
   const homePage = location.pathname === "/";
+  const dispatch = useDispatch<AppDispatch>()
+
+   useEffect(() => {
+      dispatch(fetchTickets());
+    }, [dispatch]);
   
     const dateInputStyle = {
       color: homePage ? "white" : "black",

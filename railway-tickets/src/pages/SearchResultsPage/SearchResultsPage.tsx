@@ -1,25 +1,32 @@
-import { useState } from "react";
-import RadioButton from "../../components/buttons/RadioButton";
-import TextInput from "../../components/inputs/TextInput";
-import DateInput from "../../components/inputs/DateInput";
-import GeneralCard from "../../components/generalcard/GeneralCard";
-import Footer from "../../components/footer/Footer";
-import PassengerCount from "../../components/passengercount/PassengerCount";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, RootState } from "../../redux/store";
+import { useState, useEffect } from 'react';
+import RadioButton from '../../components/buttons/RadioButton';
+import TextInput from '../../components/inputs/TextInput';
+import DateInput from '../../components/inputs/DateInput';
+import GeneralCard from '../../components/generalcard/GeneralCard';
+import Footer from '../../components/footer/Footer';
+import PassengerCount from '../../components/passengercount/PassengerCount';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../redux/store';
 import {
   setTripType,
   type FormData,
   type TripType,
-} from "../../redux/formSlice";
-import "./SearchResultsPage.scss";
+} from '../../redux/formSlice';
+import './SearchResultsPage.scss';
+import { fetchTickets } from '../../redux/ticketsSlice';
+import filterTicketsByCities from '../../util/filterTickets';
 
 function SearchResultsPage() {
-  const initialFormData = useSelector((state: RootState) => state.form);
+  const initialFormData = useSelector((state: RootState) => state.formData);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const dispatchTripType = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(fetchTickets());
+  }, [dispatch]);
 
   const handleTripChange = (value: TripType) => {
     setFormData((prev) => ({
@@ -40,8 +47,10 @@ function SearchResultsPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // предотвращаю перезагрузку страницы
-    navigate("/review");
+    navigate('/review');
   };
+
+  const avilableTickets = filterTicketsByCities();
 
   return (
     <div className="search-page">
@@ -52,8 +61,8 @@ function SearchResultsPage() {
             <RadioButton
               name="tripType"
               value={formData.tripType}
-              checked={formData.tripType === "round"}
-              onChange={() => handleTripChange("round")}
+              checked={formData.tripType === 'round'}
+              onChange={() => handleTripChange('round')}
             >
               Round Trip
             </RadioButton>
@@ -61,8 +70,8 @@ function SearchResultsPage() {
             <RadioButton
               name="tripType"
               value={formData.tripType}
-              checked={formData.tripType === "oneway"}
-              onChange={() => handleTripChange("oneway")}
+              checked={formData.tripType === 'oneway'}
+              onChange={() => handleTripChange('oneway')}
             >
               One Way
             </RadioButton>
@@ -75,7 +84,7 @@ function SearchResultsPage() {
             <TextInput
               label="Departure:"
               value={formData.fromCity}
-              onChange={(value) => handleInputChange("fromCity", value)}
+              onChange={(value) => handleInputChange('fromCity', value)}
               placeholder="Your City / Station"
               name="fromCity"
               required
@@ -84,7 +93,7 @@ function SearchResultsPage() {
             <TextInput
               label="Arrival:"
               value={formData.toCity}
-              onChange={(value) => handleInputChange("toCity", value)}
+              onChange={(value) => handleInputChange('toCity', value)}
               placeholder="Where To?"
               name="toCity"
               required
@@ -94,16 +103,16 @@ function SearchResultsPage() {
             <DateInput
               label="Pick your lucky day"
               value={formData.departureDate}
-              onChange={(value) => handleInputChange("departureDate", value)}
+              onChange={(value) => handleInputChange('departureDate', value)}
               name="departureDate"
               required
             />
 
-            {formData.tripType !== "oneway" && (
+            {formData.tripType !== 'oneway' && (
               <DateInput
                 label=""
                 value={formData.returnDate}
-                onChange={(value) => handleInputChange("returnDate", value)}
+                onChange={(value) => handleInputChange('returnDate', value)}
                 name="returnDate"
                 isReturnDate={true}
               />
@@ -129,9 +138,13 @@ function SearchResultsPage() {
           </div>
         </div>
         <h1>Avilable Trains</h1>
-        <GeneralCard />
-        <GeneralCard />
-        <GeneralCard />
+        {avilableTickets.length > 0 ? (
+          avilableTickets.map((ticket) => (
+            <GeneralCard key={ticket.id} ticketData={ticket} />
+          ))
+        ) : (
+          <p style={{color: 'black'}}>Билетов по вашему запросу не найдено.</p>
+        )}
       </div>
       <Footer />
     </div>

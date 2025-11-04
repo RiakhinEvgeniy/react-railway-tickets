@@ -2,7 +2,7 @@
   "cities": [
     { "id": "1", "name": "Odessa", "alias": "ODA" },
     { "id": "2", "name": "Berlin", "alias": "BRL" },
-    { "id": "3", "name": "New-York", "alias": "NYW" },
+    { "id": "3", "name": "Nikolaev", "alias": "NK" },
     { "id": "4", "name": "Kiev", "alias": "KIV" },
     { "id": "5", "name": "Wolfsburg", "alias": "WRG" }
   ],
@@ -36,7 +36,7 @@
       "ETA": {
         "day": "24 november",
         "time": "15:40",
-        "station": "Berlin"
+        "station": "Wolfsburg"
       },
       "ETD": {
         "day": "24 november",
@@ -105,6 +105,69 @@
         "day": "26 november",
         "time": "19:00",
         "station": "Kiev"
+      },
+      "classes": [
+        { "type": "3A", "available": 446, "price": 900 },
+        { "type": "2A", "available": 256, "price": 1000 },
+        { "type": "1A", "available": 36, "price": 1200 }
+      ]
+    },
+    {
+      "id": "7",
+      "transportCompany": "SouthTransportation",
+      "schedule": "1",
+      "totalTime": "12",
+      "ETA": {
+        "day": "26 november",
+        "time": "9:00",
+        "station": "Berlin"
+      },
+      "ETD": {
+        "day": "26 november",
+        "time": "21:00",
+        "station": "Kiev"
+      },
+      "classes": [
+        { "type": "3A", "available": 446, "price": 900 },
+        { "type": "2A", "available": 256, "price": 1000 },
+        { "type": "1A", "available": 36, "price": 1200 }
+      ]
+    },
+    {
+      "id": "8",
+      "transportCompany": "SouthTransportation",
+      "schedule": "1",
+      "totalTime": "24",
+      "ETA": {
+        "day": "28 november",
+        "time": "16:00",
+        "station": "Wolfsburg"
+      },
+      "ETD": {
+        "day": "27 november",
+        "time": "16:00",
+        "station": "Odessa"
+      },
+      "classes": [
+        { "type": "3A", "available": 446, "price": 900 },
+        { "type": "2A", "available": 256, "price": 1000 },
+        { "type": "1A", "available": 36, "price": 1200 }
+      ]
+    },
+    {
+      "id": "9",
+      "transportCompany": "SouthTransportation",
+      "schedule": "1",
+      "totalTime": "4",
+      "ETA": {
+        "day": "28 november",
+        "time": "8:00",
+        "station": "Nikolaev"
+      },
+      "ETD": {
+        "day": "28 november",
+        "time": "12:00",
+        "station": "Odessa"
       },
       "classes": [
         { "type": "3A", "available": 446, "price": 900 },

@@ -27,7 +27,8 @@ export const fetchCities = createAsyncThunk<
   City[],
   void,
   { rejectValue: string }
->('cities/fetchCities', async (_, { rejectWithValue }) => {
+>('cities/fetchCities', 
+  async (_, { rejectWithValue }) => {
   const API_URL = 'http://localhost:3001/cities';
 
   try {
@@ -48,7 +49,11 @@ export const fetchCities = createAsyncThunk<
 const citySlice = createSlice({
   name: 'cities',
   initialState,
-  reducers: {},
+  reducers: {
+    getCity: (state) => {
+      state.cities;
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -60,7 +65,8 @@ const citySlice = createSlice({
         fetchCities.fulfilled,
         (state, action: PayloadAction<City[]>) => {
           state.cities = action.payload;
-        })
+        }
+      )
       .addCase(fetchCities.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string | 'Faild to load cities.';
@@ -69,6 +75,6 @@ const citySlice = createSlice({
   },
 });
 
-export const {} = citySlice.actions;
+export const { getCity } = citySlice.actions;
 
 export default citySlice.reducer;
