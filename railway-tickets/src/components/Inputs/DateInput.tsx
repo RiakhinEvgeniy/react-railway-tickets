@@ -1,12 +1,10 @@
-// DateInput.tsx
-import React, { useEffect } from "react";
-import "./DateInput.scss";
-import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { fetchTickets } from "../../redux/ticketsSlice";
-import type { AppDispatch } from "../../redux/store";
+import React, { useEffect } from 'react';
+import './DateInput.scss';
+import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchTickets } from '../../redux/ticketsSlice';
+import type { AppDispatch } from '../../redux/store';
 
-// 1. Определяем интерфейс для пропсов
 interface DateInputProps {
   label: string; // текст лейбла
   value: string; // текущее значение (YYYY-MM-DD)
@@ -21,7 +19,7 @@ interface DateInputProps {
 }
 
 function getMinFormatDate() {
-  return new Date().toLocaleDateString("en-CA");
+  return new Date().toLocaleDateString('en-CA');
 }
 
 function getMaxFormatDate() {
@@ -30,16 +28,15 @@ function getMaxFormatDate() {
 
   return new Date(
     nextMonthDate.setMonth(currentDate.getMonth() + 1)
-  ).toLocaleDateString("en-CA");
+  ).toLocaleDateString('en-CA');
 }
 
-// 2. Создаем функциональный компонент
 function DateInput({
   label,
   value,
   onChange,
   name,
-  className = "",
+  className = '',
   disabled = false,
   required = false,
   min = getMinFormatDate(),
@@ -47,31 +44,31 @@ function DateInput({
   isReturnDate = false,
 }: DateInputProps) {
   const location = useLocation();
-  const homePage = location.pathname === "/";
-  const dispatch = useDispatch<AppDispatch>()
+  const homePage = location.pathname === '/';
+  const dispatch = useDispatch<AppDispatch>();
 
-   useEffect(() => {
-      dispatch(fetchTickets());
-    }, [dispatch]);
-  
-    const dateInputStyle = {
-      color: homePage ? "white" : "black",
-    };
+  useEffect(() => {
+    dispatch(fetchTickets());
+  }, [dispatch]);
 
-  // 3. Обработчик изменения значения
+  const dateInputStyle = {
+    color: homePage ? 'white' : 'black',
+  };
+
+  // Обработчик изменения значения
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     onChange(e.target.value);
   }
 
-  // 4. Генерируем уникальный id для связи label и input
+  // Генерируем уникальный id для связи label и input
   const inputId = `date-input-${
-    name || label.toLowerCase().replace(/\s+/g, "-")
+    name || label.toLowerCase().replace(/\s+/g, '-')
   }`;
 
   return (
     <div
       className={`date-input ${className} ${
-        isReturnDate ? "date-input--return" : ""
+        isReturnDate ? 'date-input--return' : ''
       }`}
     >
       <label
@@ -80,7 +77,6 @@ function DateInput({
         className="date-input__label"
       >
         {label}
-        {/* {required && <span className="date-input__required">*</span>} */}
       </label>
 
       <input
@@ -93,7 +89,7 @@ function DateInput({
         required={required}
         min={min}
         max={max}
-        className="date-input__field"
+        className={`date-input__field`}
       />
     </div>
   );

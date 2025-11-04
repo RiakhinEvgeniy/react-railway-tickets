@@ -13,12 +13,12 @@
       "schedule": "1",
       "totalTime": "8",
       "ETA": {
-        "day": "24 november",
+        "day": "24 nov",
         "time": "11:40",
         "station": "Berlin"
       },
       "ETD": {
-        "day": "24 november",
+        "day": "24 nov",
         "time": "19:40",
         "station": "Odessa"
       },
@@ -34,12 +34,12 @@
       "schedule": "1",
       "totalTime": "8",
       "ETA": {
-        "day": "24 november",
+        "day": "24 nov",
         "time": "15:40",
         "station": "Wolfsburg"
       },
       "ETD": {
-        "day": "24 november",
+        "day": "24 nov",
         "time": "23:40",
         "station": "Odessa"
       },
@@ -55,12 +55,12 @@
       "schedule": "1",
       "totalTime": "10",
       "ETA": {
-        "day": "24 november",
+        "day": "24 nov",
         "time": "17:00",
         "station": "Berlin"
       },
       "ETD": {
-        "day": "25 november",
+        "day": "25 nov",
         "time": "03:00",
         "station": "Odessa"
       },
@@ -76,12 +76,12 @@
       "schedule": "1",
       "totalTime": "10",
       "ETA": {
-        "day": "25 november",
+        "day": "25 nov",
         "time": "19:00",
         "station": "Kiev"
       },
       "ETD": {
-        "day": "26 november",
+        "day": "26 nov",
         "time": "05:00",
         "station": "Odessa"
       },
@@ -97,12 +97,12 @@
       "schedule": "1",
       "totalTime": "10",
       "ETA": {
-        "day": "25 november",
+        "day": "25 nov",
         "time": "9:00",
         "station": "Odessa"
       },
       "ETD": {
-        "day": "26 november",
+        "day": "26 nov",
         "time": "19:00",
         "station": "Kiev"
       },
@@ -118,12 +118,12 @@
       "schedule": "1",
       "totalTime": "12",
       "ETA": {
-        "day": "26 november",
+        "day": "26 nov",
         "time": "9:00",
         "station": "Berlin"
       },
       "ETD": {
-        "day": "26 november",
+        "day": "26 nov",
         "time": "21:00",
         "station": "Kiev"
       },
@@ -139,12 +139,12 @@
       "schedule": "1",
       "totalTime": "24",
       "ETA": {
-        "day": "28 november",
+        "day": "28 nov",
         "time": "16:00",
         "station": "Wolfsburg"
       },
       "ETD": {
-        "day": "27 november",
+        "day": "27 nov",
         "time": "16:00",
         "station": "Odessa"
       },
@@ -160,12 +160,12 @@
       "schedule": "1",
       "totalTime": "4",
       "ETA": {
-        "day": "28 november",
+        "day": "28 nov",
         "time": "8:00",
         "station": "Nikolaev"
       },
       "ETD": {
-        "day": "28 november",
+        "day": "28 nov",
         "time": "12:00",
         "station": "Odessa"
       },

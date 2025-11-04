@@ -32,7 +32,7 @@ $lightBackground: rgb(240, 240, 240);
       padding: 20px;
 
       &__image {
-        background-image: url("@/assets/beach3.png");
+        background-image: url('@/assets/beach3.png');
         background-position: left;
         background-repeat: no-repeat;
         background-size: cover;
@@ -45,7 +45,7 @@ $lightBackground: rgb(240, 240, 240);
       }
 
       &__second-img {
-        background-image: url("@/assets/indian-rail-1_5.png");
+        background-image: url('@/assets/indian-rail-1_5.png');
         background-position: left;
         background-repeat: no-repeat;
         background-size: cover;
@@ -70,7 +70,6 @@ $lightBackground: rgb(240, 240, 240);
 .ticket-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   gap: 1rem;
 

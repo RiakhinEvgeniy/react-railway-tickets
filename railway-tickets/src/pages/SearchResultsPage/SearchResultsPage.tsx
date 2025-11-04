@@ -143,7 +143,7 @@ function SearchResultsPage() {
             <GeneralCard key={ticket.id} ticketData={ticket} />
           ))
         ) : (
-          <p style={{color: 'black'}}>Билетов по вашему запросу не найдено.</p>
+          <p style={{color: 'black', fontSize: '30px'}}>Билетов по вашему запросу не найдено.</p>
         )}
       </div>
       <Footer />

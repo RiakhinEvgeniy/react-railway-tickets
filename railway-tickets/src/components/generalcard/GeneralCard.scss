@@ -1,29 +1,29 @@
 .general-card {
-    width: 100%;
-    border: 2px solid #888988;
-    border-radius: 8px;   
-    color: black;
-    padding: 20px;
-    margin: 20px 0px;
+  width: 100%;
+  border: 2px solid #888988;
+  border-radius: 8px;
+  color: black;
+  padding: 20px;
+  margin: 20px 0px;
 
-    &__everyday-box {
-        margin: 20px 0px;
+  &__everyday-box {
+    margin: 20px 15px;
+    
 
-        &__everyday {
-            padding: 5px 15px;
-            border: 1px solid #5E4AE3;
-            border-radius: 8px;
-            width: 95px;
-            margin: 10px 0px;
-            text-align: center;
-            font-weight: 500;
-        }
+    &__everyday {
+      padding: 5px 15px;
+      border: 1px solid #5e4ae3;
+      border-radius: 8px;
+      width: 95px;
+      margin: 10px 0px;
+      text-align: center;
+      font-weight: 500;
     }
+  }
 
-    &__ticketcard-box {
-        display: flex;
-        justify-content: space-around;
-        // border: 1px solid red;
-        margin: 30px 0px;
-    }
+  &__ticketcard-box {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0px;
+  }
 }

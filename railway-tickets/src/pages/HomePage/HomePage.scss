@@ -1,5 +1,5 @@
 .home-page {
-  background-image: url("@/assets/earth-from-space.png");
+  background-image: url('@/assets/earth-from-space.png');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -37,6 +37,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
     gap: 1rem;
 
     &__trip-type {
@@ -44,7 +45,6 @@
       gap: 1rem;
       background-color: white;
       border-radius: 8px;
-      // padding: 5px;
       width: 84%;
     }
 
@@ -78,11 +78,12 @@
       cursor: pointer;
     }
 
-    &__dates {
+    &__dates-homepage {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
       gap: 0.5rem;
+      width: 84%;
       height: 80px;
 
       // Специальные стили для поля возврата

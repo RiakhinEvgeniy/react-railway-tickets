@@ -15,7 +15,7 @@ const numberOfTrain = Math.floor(Math.random() * 100000);
   
   return (
     <div className="general-card">
-      <h2>{`${numberOfTrain} - ${departureCity}`}</h2>
+      <h2 style={{marginLeft: '15px'}}>{`${numberOfTrain} - ${departureCity}`}</h2>
       <div className="general-card__everyday-box">
         <h3 style={{ fontWeight: '500' }}>Runs on</h3>
         <h3 className="general-card__everyday-box__everyday">Everyday</h3>

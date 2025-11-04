@@ -106,7 +106,7 @@ function HomePage() {
               required
             />
           </div>
-          <div className="ticket-form__dates">
+          <div className="ticket-form__dates-homepage">
             <DateInput
               label="Pick your lucky day"
               value={formData.departureDate}
@@ -115,7 +115,7 @@ function HomePage() {
               required
             />
 
-            {formData.tripType === 'round' && (
+            {formData.tripType !== 'oneway' && (
               <DateInput
                 label=""
                 value={formData.returnDate}
