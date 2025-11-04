@@ -14,6 +14,7 @@ import {
 } from '../../redux/formSlice';
 import type { AppDispatch, RootState } from '../../redux/store';
 import './HomePage.scss';
+import loadTickets from '../../util/loadTicketsData';
 
 function HomePage() {
   const initialFormData = useSelector((state: RootState) => state.formData);
@@ -54,6 +55,8 @@ function HomePage() {
     changeTheme();
     navigate('/search');
   };
+
+  loadTickets();
 
   return (
     <div className="home-page">

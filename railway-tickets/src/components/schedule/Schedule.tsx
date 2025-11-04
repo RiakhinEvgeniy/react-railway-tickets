@@ -2,13 +2,16 @@ import type { Ticket } from '../../redux/ticketsSlice';
 import './Schedule.scss';
 
 interface TicketProps {
-  ticketData: Ticket
+  ticketData: Ticket;
 }
 
-function Schedule({ticketData}: TicketProps) {
+function Schedule({ ticketData }: TicketProps) {
   const fontStyleH3 = {
     fontWeight: '500',
   };
+  if (!ticketData) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="schedule">
       <div>
@@ -16,7 +19,9 @@ function Schedule({ticketData}: TicketProps) {
         <h3 style={fontStyleH3}>{`${ticketData.ETD.time} pm`}</h3>
         <h3 style={fontStyleH3}>{`${ticketData.ETD.station} - NDLS`}</h3>
       </div>
-      <span style={{ color: 'rgba(1, 4, 0, 0.5019607843)' }}>{ticketData.totalTime}</span>
+      <span style={{ color: 'rgba(1, 4, 0, 0.5019607843)' }}>
+        {ticketData.totalTime}
+      </span>
       <div>
         <h3>{ticketData.ETA.day}</h3>
         <h3 style={fontStyleH3}>{`${ticketData.ETA.time} am`}</h3>

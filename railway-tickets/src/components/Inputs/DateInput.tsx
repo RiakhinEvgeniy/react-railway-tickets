@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 import './DateInput.scss';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { fetchTickets } from '../../redux/ticketsSlice';
-import type { AppDispatch } from '../../redux/store';
+// import { fetchTickets } from '../../redux/ticketsSlice';
+// import type { AppDispatch } from '../../redux/store';
 
 interface DateInputProps {
   label: string; // текст лейбла
@@ -45,11 +44,11 @@ function DateInput({
 }: DateInputProps) {
   const location = useLocation();
   const homePage = location.pathname === '/';
-  const dispatch = useDispatch<AppDispatch>();
+  // const dispatch = useDispatch<AppDispatch>();
 
-  useEffect(() => {
-    dispatch(fetchTickets());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchTickets());
+  // }, [dispatch]);
 
   const dateInputStyle = {
     color: homePage ? 'white' : 'black',

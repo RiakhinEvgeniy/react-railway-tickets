@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import RadioButton from '../../components/buttons/RadioButton';
 import TextInput from '../../components/inputs/TextInput';
 import DateInput from '../../components/inputs/DateInput';
@@ -13,20 +13,16 @@ import {
   type FormData,
   type TripType,
 } from '../../redux/formSlice';
-import './SearchResultsPage.scss';
-import { fetchTickets } from '../../redux/ticketsSlice';
 import filterTicketsByCities from '../../util/filterTickets';
+import type { Ticket } from '../../redux/ticketsSlice';
+import './SearchResultsPage.scss';
 
 function SearchResultsPage() {
   const initialFormData = useSelector((state: RootState) => state.formData);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const dispatchTripType = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    dispatch(fetchTickets());
-  }, [dispatch]);
+  const [avilableTickets] = useState<Ticket[]>(filterTicketsByCities());
 
   const handleTripChange = (value: TripType) => {
     setFormData((prev) => ({
@@ -49,8 +45,6 @@ function SearchResultsPage() {
     e.preventDefault(); // предотвращаю перезагрузку страницы
     navigate('/review');
   };
-
-  const avilableTickets = filterTicketsByCities();
 
   return (
     <div className="search-page">
@@ -143,7 +137,9 @@ function SearchResultsPage() {
             <GeneralCard key={ticket.id} ticketData={ticket} />
           ))
         ) : (
-          <p style={{color: 'black', fontSize: '30px'}}>Билетов по вашему запросу не найдено.</p>
+          <p style={{ color: 'black', fontSize: '30px' }}>
+            Билетов по вашему запросу не найдено.
+          </p>
         )}
       </div>
       <Footer />
