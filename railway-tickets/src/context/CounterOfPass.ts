@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext } from 'react';
 
 export interface CounterType {
   valueCounter: number;
@@ -13,7 +13,7 @@ export const CounterContext = createContext<CounterType | undefined>(
 export const useCounter = (): CounterType => {
   const counter = useContext(CounterContext);
   if (counter === undefined) {
-    throw new Error("useCounter должен использоваться внутри CounterProvider");
+    throw new Error('useCounter должен использоваться внутри CounterProvider');
   }
   return counter;
 };

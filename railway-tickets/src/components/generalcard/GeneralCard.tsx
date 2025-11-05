@@ -4,23 +4,34 @@ import TicketCard from '../ticketcard/TicketCard';
 import type { RootState } from '../../redux/store';
 import './GeneralCard.scss';
 import type { Ticket } from '../../redux/ticketsSlice';
+import { useTicketId } from '../../context/ticketId';
 
 interface TicketProps {
-  ticketData: Ticket
+  ticketData: Ticket;
 }
 
-function GeneralCard({ticketData}: TicketProps) {
-const departureCity = useSelector((state: RootState) => state.formData.fromCity);
-const numberOfTrain = Math.floor(Math.random() * 100000);
-  
+function GeneralCard({ ticketData }: TicketProps) {
+  const departureCity = useSelector(
+    (state: RootState) => state.formData.fromCity
+  );
+  const numberOfTrain = Math.floor(Math.random() * 100000);
+
+  const { saveTicketId } = useTicketId();
+
+  function handlSelectTicket() {
+    console.log('Getting ID from ticketData: ', ticketData.id);
+    saveTicketId(+ticketData.id);
+  }
   return (
-    <div className="general-card">
-      <h2 style={{marginLeft: '15px'}}>{`${numberOfTrain} - ${departureCity}`}</h2>
+    <div className="general-card" onClick={handlSelectTicket}>
+      <h2
+        style={{ marginLeft: '15px' }}
+      >{`${numberOfTrain} - ${departureCity}`}</h2>
       <div className="general-card__everyday-box">
         <h3 style={{ fontWeight: '500' }}>Runs on</h3>
         <h3 className="general-card__everyday-box__everyday">Everyday</h3>
       </div>
-      <Schedule ticketData={ticketData}/>
+      <Schedule ticketData={ticketData} />
       <div className="general-card__ticketcard-box">
         <TicketCard
           backgroundColor="#7DCFB6"
