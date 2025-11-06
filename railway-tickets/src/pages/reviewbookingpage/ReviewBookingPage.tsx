@@ -7,10 +7,13 @@ import Offers from '../../components/offers/Offers';
 import Policy from '../../components/policy/Policy';
 import Ticket from '../../components/ticket/Ticket';
 import TotalCard from '../../components/totalcard/TotalCard';
+import { useCounter } from '../../context/CounterOfPass';
 import imagesUrl from '../../data/imagesUrl';
 import './ReviewBookingPage.scss';
 
 function ReviewBookingPage() {
+  const { valueCounter } = useCounter();
+
   function handleBookingSubmit(e: React.FormEvent) {
     e.preventDefault();
     console.log('Подтверждение из формы в review');
@@ -22,10 +25,15 @@ function ReviewBookingPage() {
         <div className="review__wraper__ticket">
           <Ticket />
         </div>
-        <form onSubmit={handleBookingSubmit} className='review__wraper__form-review'>
-          <div className="review__wraper__ticket">
-            <BillingInfo />
-          </div>
+        <form
+          onSubmit={handleBookingSubmit}
+          className="review__wraper__form-review"
+        >
+          {valueCounter > 0 ? (Array.from({ length: valueCounter }).map((_, i) => (
+            <div key={i} className="review__wraper__ticket">
+              <BillingInfo />
+            </div>
+          ))) : (<h1 style={{margin: '20px'}}>Не выбрано ни одного пассажира</h1>)}
           <div className="review__wraper__food">
             <Food
               imageUrl={imagesUrl[0]}

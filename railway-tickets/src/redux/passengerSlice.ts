@@ -39,9 +39,13 @@ const passengerSlice = createSlice({
     ) => {
       state.passenger[action.payload.field] = action.payload.value;
     },
+
+    getPassengerInfo: (state) => {
+      return state;
+    },
   },
 });
 
-export const { addPassenger, updatePassengerField } = passengerSlice.actions;
+export const { addPassenger, updatePassengerField, getPassengerInfo } = passengerSlice.actions;
 
 export default passengerSlice.reducer;

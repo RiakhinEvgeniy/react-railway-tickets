@@ -10,7 +10,7 @@ function Schedule({ ticketData }: TicketProps) {
     fontWeight: '500',
   };
   if (!ticketData) {
-    return <div>Loading...</div>;
+    return <div>Do not select ticket</div>;
   }
   return (
     <div className="schedule">

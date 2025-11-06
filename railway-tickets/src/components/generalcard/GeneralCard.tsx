@@ -19,7 +19,6 @@ function GeneralCard({ ticketData }: TicketProps) {
   const { saveTicketId } = useTicketId();
 
   function handlSelectTicket() {
-    console.log('Getting ID from ticketData: ', ticketData.id);
     saveTicketId(+ticketData.id);
   }
   return (

@@ -14,7 +14,6 @@ import {
   type TripType,
 } from '../../redux/formSlice';
 import filterTicketsByCities from '../../util/filterTickets';
-import type { Ticket } from '../../redux/ticketsSlice';
 import './SearchResultsPage.scss';
 
 function SearchResultsPage() {
@@ -22,7 +21,7 @@ function SearchResultsPage() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const dispatchTripType = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const [avilableTickets] = useState<Ticket[]>(filterTicketsByCities());
+  const avilableTickets = filterTicketsByCities();
 
   const handleTripChange = (value: TripType) => {
     setFormData((prev) => ({
