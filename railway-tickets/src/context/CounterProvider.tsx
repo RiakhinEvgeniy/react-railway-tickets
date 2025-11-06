@@ -9,7 +9,11 @@ function CounterProvider({ children }: CounterProviderProps) {
   const [valueCounter, setValueCounter] = useState<number>(0);
 
   const increaseCounter = () => {
-    setValueCounter(valueCounter + 1);
+    if(valueCounter >= 7) {
+      setValueCounter((currentValueCounter) => currentValueCounter = 0)
+    } else {
+      setValueCounter(valueCounter + 1);
+    }
   };
 
   const decreaseCounter = () => {

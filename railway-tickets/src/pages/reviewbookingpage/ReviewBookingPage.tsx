@@ -31,7 +31,7 @@ function ReviewBookingPage() {
         >
           {valueCounter > 0 ? (Array.from({ length: valueCounter }).map((_, i) => (
             <div key={i} className="review__wraper__ticket">
-              <BillingInfo />
+              <BillingInfo numberOfPassanger={i}/>
             </div>
           ))) : (<h1 style={{margin: '20px'}}>Не выбрано ни одного пассажира</h1>)}
           <div className="review__wraper__food">

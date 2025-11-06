@@ -6,7 +6,7 @@ function PassengerCount() {
   const { valueCounter, increaseCounter, decreaseCounter } = useCounter();
 
   const increasePassenger = () => {
-    if (valueCounter <= 6) {
+    if (valueCounter <= 7) {
       increaseCounter();
     }
   };

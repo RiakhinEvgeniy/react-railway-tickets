@@ -22,7 +22,6 @@ interface BillingInputsProps {
 function BillingInputs({
   label,
   value,
-  // onChange,
   placeholder = '',
   autocomplete,
   name,
@@ -32,14 +31,14 @@ function BillingInputs({
   type,
 }: BillingInputsProps) {
   const dispatch = useDispatch<AppDispatch>();
-  // 3. Обработчик изменения значения
+  // Обработчик изменения значения
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    // onChange(e.target.value);
     dispatch(updatePassengerField({ field: name, value: e.target.value }));
   }
 
-  // 4. Генерируем уникальный id для связи label и input
-  const inputId = `billing-${name || label.toLowerCase().replace(/\s+/g, '-')}`;
+  // Генерируем уникальный id для связи label и input
+  const randomNum = Math.floor(Math.random() * 100000);
+  const inputId = `${+randomNum}-${name || label.toLowerCase().replace(/\s+/g, '-')}`;  
 
   return (
     <div className={`billing-input ${className}`}>

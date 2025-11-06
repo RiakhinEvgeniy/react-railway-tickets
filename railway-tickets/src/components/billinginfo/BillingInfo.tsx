@@ -3,13 +3,17 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import './BillingInfo.scss';
 
-function BillingInfo() {
+interface  NumberPassengerProps {
+  numberOfPassanger: number | 0;
+}
+
+function BillingInfo({numberOfPassanger}: NumberPassengerProps) {
   const passengerData = useSelector((state: RootState) => state.passengerData);
 
   return (
     <div className="billinginfo">
       <div className="billinginfo__title">
-        <h2>Passanger 1</h2>
+        <h2>{`Passenger ${numberOfPassanger + 1}`}</h2>
         <span style={{ color: '#808180' }}>Please enter your contact info</span>
       </div>
 
