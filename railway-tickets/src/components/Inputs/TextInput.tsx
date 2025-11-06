@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../../redux/store';
 import './TextInput.scss';
 import { fetchCities } from '../../redux/citiesSlice';
+import { selectAllCitiesArray } from '../../redux/selectors/citySelectors';
 
 // 1. Определяем интерфейс для пропсов
 interface TextInputProps {
@@ -35,7 +36,8 @@ function TextInput({
   const homePage = location.pathname === '/';
   const [isClick, setIsClick] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
-  const citiesData = useSelector((state: RootState) => state.cityData.cities); //cityData из store.ts; cities из sitiesSlice
+  // const citiesData = useSelector((state: RootState) => state.cityData.cities); //cityData из store.ts; cities из sitiesSlice
+  const citiesData = useSelector(selectAllCitiesArray); //cityData из store.ts; cities из sitiesSlice
   const isLoading = useSelector((state: RootState) => state.cityData.isLoading);
 
   const textInputStyle = {

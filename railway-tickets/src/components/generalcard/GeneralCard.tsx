@@ -14,8 +14,7 @@ function GeneralCard({ ticketData }: TicketProps) {
   const departureCity = useSelector(
     (state: RootState) => state.formData.fromCity
   );
-  const numberOfTrain = Math.floor(Math.random() * 100000);
-
+  const numberOfTrain = useSelector((state: RootState) => state.trainNumberData.numberOfTrain);
   const { saveTicketId } = useTicketId();
 
   function handlSelectTicket() {

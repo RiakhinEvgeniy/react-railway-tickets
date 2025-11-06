@@ -2,7 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import formReducer from './formSlice';
 import cityReducer from './citiesSlice';
 import passengerReducer from './passengerSlice';
-import ticketReduser from './ticketsSlice'
+import ticketReduser from './ticketsSlice';
+import trainReducer from './trainSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     cityData: cityReducer,
     passengerData: passengerReducer,
     ticketsData: ticketReduser,
+    trainNumberData: trainReducer,
   },
 });
 

@@ -6,8 +6,8 @@ function filterTicketsByCities() {
   const departureCity = useSelector(
     (state: RootState) => state.formData.fromCity
   );
-  const tickets = useSelector((state: RootState) => state.ticketsData.tickets);
-  const avilableTickets = tickets.filter(
+  const allTickets = useSelector((state: RootState) => state.ticketsData.tickets);
+  const avilableTickets = allTickets.filter(
     (ticket) =>
       ticket.ETD.station === departureCity && ticket.ETA.station === arrivalCity
   );

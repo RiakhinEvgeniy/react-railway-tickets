@@ -15,7 +15,6 @@ import {
 import type { AppDispatch, RootState } from '../../redux/store';
 import './HomePage.scss';
 import loadTickets from '../../util/loadTicketsData';
-
 function HomePage() {
   const initialFormData = useSelector((state: RootState) => state.formData);
   const [formData, setFormData] = useState<FormData>(initialFormData);

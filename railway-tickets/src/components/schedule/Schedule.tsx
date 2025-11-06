@@ -1,4 +1,8 @@
 import type { Ticket } from '../../redux/ticketsSlice';
+import {
+  getAliasOfCityArrival,
+  getAliasOfCityDeparture,
+} from '../../util/getAliasesFromCity';
 import './Schedule.scss';
 
 interface TicketProps {
@@ -12,12 +16,17 @@ function Schedule({ ticketData }: TicketProps) {
   if (!ticketData) {
     return <div>Do not select ticket</div>;
   }
+
+  const aliasDeparture = getAliasOfCityDeparture();
+  const aliasArrival = getAliasOfCityArrival();
   return (
     <div className="schedule">
       <div>
         <h3>{ticketData.ETD.day}</h3>
         <h3 style={fontStyleH3}>{`${ticketData.ETD.time} pm`}</h3>
-        <h3 style={fontStyleH3}>{`${ticketData.ETD.station} - NDLS`}</h3>
+        <h3
+          style={fontStyleH3}
+        >{`${ticketData.ETD.station} - ${aliasDeparture}`}</h3>
       </div>
       <span style={{ color: 'rgba(1, 4, 0, 0.5019607843)' }}>
         {ticketData.totalTime}
@@ -25,7 +34,9 @@ function Schedule({ ticketData }: TicketProps) {
       <div>
         <h3>{ticketData.ETA.day}</h3>
         <h3 style={fontStyleH3}>{`${ticketData.ETA.time} am`}</h3>
-        <h3 style={fontStyleH3}>{`${ticketData.ETA.station} - LJN`}</h3>
+        <h3
+          style={fontStyleH3}
+        >{`${ticketData.ETA.station} - ${aliasArrival}`}</h3>
       </div>
     </div>
   );
