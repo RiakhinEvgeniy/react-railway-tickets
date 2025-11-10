@@ -179,15 +179,24 @@
   "food": [
     {
       "id": 1,
-      "title": "Pizza",
+      "nameOfDish": "Grilled Tandoori Chicken",
+      "detailsOfDish": "With dry fruits",
       "price": 20,
-      "image": "vite.svg"
+      "image": "/src/assets/chicken.png"
     },
     {
       "id": 2,
-      "title": "Doner",
+      "nameOfDish": "Paneer ticka Rice",
+      "detailsOfDish": "Bowl - Mini",
       "price": 30,
-      "image": "vite.svg"
+      "image": "/src/assets/rice.png"
+    },
+    {
+      "id": 3,
+      "nameOfDish": "Aloo Paratha Curd",
+      "detailsOfDish": "Meal (2 pcs)",
+      "price": 350,
+      "image": "/src/assets/blin.png"
     }
   ]
 }

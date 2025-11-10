@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import Apply from '../../components/apply/Apply';
 import BillingInfo from '../../components/billinginfo/BillingInfo';
 import SimpleButton from '../../components/buttons/SimpleButton';
@@ -8,15 +9,20 @@ import Policy from '../../components/policy/Policy';
 import Ticket from '../../components/ticket/Ticket';
 import TotalCard from '../../components/totalcard/TotalCard';
 import { useCounter } from '../../context/CounterOfPass';
-import imagesUrl from '../../data/imagesUrl';
 import './ReviewBookingPage.scss';
+import { selectAllFoodsArray } from '../../redux/selectors/foodSelectors';
 
 function ReviewBookingPage() {
   const { valueCounter } = useCounter();
+  const foods = useSelector(selectAllFoodsArray);
+  console.log(foods);
 
   function handleBookingSubmit(e: React.FormEvent) {
     e.preventDefault();
     console.log('Подтверждение из формы в review');
+  }
+  if (!foods) {
+    return <div>Array of foods is empty!</div>;
   }
   return (
     <div className="review">
@@ -29,30 +35,29 @@ function ReviewBookingPage() {
           onSubmit={handleBookingSubmit}
           className="review__wraper__form-review"
         >
-          {valueCounter > 0 ? (Array.from({ length: valueCounter }).map((_, i) => (
-            <div key={i} className="review__wraper__ticket">
-              <BillingInfo numberOfPassanger={i}/>
-            </div>
-          ))) : (<h1 style={{margin: '20px'}}>Не выбрано ни одного пассажира</h1>)}
+          {valueCounter > 0 ? (
+            Array.from({ length: valueCounter }).map((_, i) => (
+              <div key={i} className="review__wraper__ticket">
+                <BillingInfo numberOfPassanger={i} />
+              </div>
+            ))
+          ) : (
+            <h1 style={{ margin: '20px' }}>Не выбрано ни одного пассажира</h1>
+          )}
+
           <div className="review__wraper__food">
-            <Food
-              imageUrl={imagesUrl[0]}
-              price="$200"
-              menu1="Paneer ticka Rice"
-              menu2="Bowl - Mini"
-            />
-            <Food
-              imageUrl={imagesUrl[1]}
-              price="$500"
-              menu1="Grilled Tandoori Chicken"
-              menu2="With dry fruits"
-            />
-            <Food
-              imageUrl={imagesUrl[2]}
-              price="$700"
-              menu1="Aloo Paratha Curd"
-              menu2="Meal (2 pcs)"
-            />
+            {foods.length > 0 ? (
+              foods.map((food) => (
+                <Food
+                  imageUrl={food.image}
+                  price={food.price}
+                  nameOfDish={food.nameOfDish}
+                  detailsOfDish={food.detailsOfDish}
+                />
+              ))
+            ) : (
+              <h2>There is no food</h2>
+            )}
           </div>
           <div className="review__wraper__view-more">View More &gt;</div>
           <div className="review__wraper__offers">

@@ -62,9 +62,7 @@ const citySlice = createSlice({
   name: 'cities',
   initialState,
   reducers: {
-    resetSitiesState: (state) => {
-      state = initialState;
-    }
+    resetSitiesState: (state) => (state = initialState),
   },
 
   extraReducers: (builder) => {

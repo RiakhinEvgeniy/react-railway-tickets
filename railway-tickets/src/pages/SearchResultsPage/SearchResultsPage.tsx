@@ -14,6 +14,7 @@ import {
   type TripType,
 } from '../../redux/formSlice';
 import filterTicketsByCities from '../../util/filterTickets';
+import loadFoodsDataFromDB from '../../util/loadFoodsData';
 import './SearchResultsPage.scss';
 
 function SearchResultsPage() {
@@ -22,6 +23,8 @@ function SearchResultsPage() {
   const dispatchTripType = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const avilableTickets = filterTicketsByCities();
+
+  loadFoodsDataFromDB();
 
   const handleTripChange = (value: TripType) => {
     setFormData((prev) => ({

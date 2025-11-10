@@ -14,7 +14,7 @@ interface TravellerInfoProps {
 }
 
 function TravellerDetails({travellerInfo}: TravellerInfoProps) {
-    const {name, age, email, extraBaggage = 0, nameOfFood = "FOOD", extraFood = 0} = travellerInfo;
+    const {name, age, email, extraBaggage = 0, nameOfFood = "FOOD MUST TO BE HEIR", extraFood = 0} = travellerInfo;
   return (
     <div className="traveller">
         <h2>Traveller Details</h2>
