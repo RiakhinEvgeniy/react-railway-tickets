@@ -1,16 +1,22 @@
-import "./TotalCard.scss";
+import { useSelector } from 'react-redux';
+import { selectFoodById } from '../../redux/selectors/foodSelectors';
+import './TotalCard.scss';
+import type { RootState } from '../../redux/store';
 
 function TotalCard() {
+  const foodId = useSelector((state: RootState) => state.idData.idObject);
+  const food = useSelector((state) => selectFoodById(state, foodId as number));
+
   return (
     <div className="totalcard">
       <h2 className="totalcard__title">Bill Details</h2>
       <div className="totalcard__info">
         <span>Base Ticket Fare</span>
-        <span>$100</span>
+        <span>$500</span>
       </div>
       <div className="totalcard__info">
-        <span>Paneer Tikka Rice Bowl - Mini</span>
-        <span>$200</span>
+        {food ? <span>{`${food.nameOfDish}`}</span> : 'Without Food'}
+        {food ? <span>{`$${food.price}`}</span> : ''}
       </div>
       <div className="totalcard__info">
         <span>Extra Baggage</span>
