@@ -15,8 +15,7 @@ import { selectAllFoodsArray } from '../../redux/selectors/foodSelectors';
 function ReviewBookingPage() {
   const { valueCounter } = useCounter();
   const foods = useSelector(selectAllFoodsArray);
-  console.log(foods);
-
+  
   function handleBookingSubmit(e: React.FormEvent) {
     e.preventDefault();
     console.log('Подтверждение из формы в review');
@@ -49,6 +48,7 @@ function ReviewBookingPage() {
             {foods.length > 0 ? (
               foods.map((food) => (
                 <Food
+                  key={food.id}
                   imageUrl={food.image}
                   price={food.price}
                   nameOfDish={food.nameOfDish}
