@@ -4,8 +4,9 @@ import cityReducer from './citiesSlice';
 import passengerReducer from './passengerSlice';
 import ticketReduser from './ticketsSlice';
 import trainReducer from './trainSlice';
-import foodReducer from './foodSlice'
-import idReducer from './idSlice'
+import foodReducer from './foodSlice';
+import idReducer from './idSlice';
+import baggageReducer from './baggageSlice';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     trainNumberData: trainReducer,
     foodData: foodReducer,
     idData: idReducer,
+    baggageData: baggageReducer,
   },
 });
 
