@@ -1,10 +1,28 @@
-import { useDispatch } from 'react-redux';
-import './Apply.scss';
-import type { AppDispatch } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../redux/store';
 import { addBaggage, type Baggage } from '../../redux/baggageSlice';
+import './Apply.scss';
+import { isApplyCode } from '../../util/discountUtil';
+import {
+  clearPromo,
+  saveCurrentPromo,
+  setPromoCode,
+} from '../../redux/promoSlice';
 
 function Apply() {
+  const promoText = useSelector(
+    (state: RootState) => state.promoData.currentPromo
+  );
   const dispatch = useDispatch<AppDispatch>();
+
+  const handleApply = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(saveCurrentPromo(e.target.value));
+    if (isApplyCode(e.target.value)) {
+      dispatch(setPromoCode(e.target.value));
+    } else {
+      dispatch(clearPromo());
+    }
+  };
 
   function addBaggageToTicket() {
     const newBaggage: Baggage = {
@@ -24,6 +42,8 @@ function Apply() {
           type="text"
           className="apply-box__code-bag__field"
           placeholder="Enter code"
+          value={promoText}
+          onChange={(e) => handleApply(e)}
         />
       </div>
       <div className="apply-box__code-bag">

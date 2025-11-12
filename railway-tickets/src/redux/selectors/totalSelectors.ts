@@ -1,6 +1,6 @@
+import { getDiscountPercent } from '../../util/discountUtil';
 import type { RootState } from '../store';
 import { createSelector } from '@reduxjs/toolkit';
-import { selectFoodById } from './foodSelectors';
 
 export interface TotalPriceDetails {
   baseFare: number;
@@ -13,10 +13,11 @@ export interface TotalPriceDetails {
 }
 
 // фиксированные значения
-const BASE_TICKET_FARE = 500;
+const BASE_TICKET_FARE = 100;
 const CGST_SGST = 400;
-const DISCOUNT = 0;
 const PRICE_BAGGAGE_DEFAULT = 0;
+
+const selectFoodEntities = (state: RootState) => state.foodData.byId;
 
 const selectFoodId = (state: RootState) => state.idData.idObject;
 
@@ -25,14 +26,24 @@ const selectBaggagePrice = (state: RootState) =>
     ? state.baggageData.priceOfBaggage
     : PRICE_BAGGAGE_DEFAULT;
 
+const selectPromoCode = (state: RootState) => state.promoData.code;
+
 // Мемоизированный селектор, который собирает всё вместе
 export const selectTotalPriceDetails = createSelector(
-  [selectFoodId, selectBaggagePrice, (state: RootState) => state],
-  (foodId, baggagePrice, state): TotalPriceDetails => {
-    // получаем блюдо (foodSelector — это функция)
-    const food = foodId !== -1 ? selectFoodById(state, foodId as number) : undefined;
+  [selectFoodEntities, selectFoodId, selectBaggagePrice, selectPromoCode],
+  (foodEntities, foodId, baggagePrice, promoCode): TotalPriceDetails => {
+    
+    const key = foodId != null ? foodId : null;
+
+    const food = key ? foodEntities[key as number] : undefined;
 
     const foodPrice = food ? food.price : 0;
+
+    const discount = getDiscountPercent(promoCode);
+
+    const DISCOUNT =
+      ((BASE_TICKET_FARE + foodPrice + baggagePrice + CGST_SGST) * discount) /
+      100;
 
     const total =
       BASE_TICKET_FARE + foodPrice + baggagePrice + CGST_SGST - DISCOUNT;

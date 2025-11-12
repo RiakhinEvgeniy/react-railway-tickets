@@ -14,6 +14,7 @@ import Policy from '../../components/policy/Policy';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import './PaymentPage.scss';
+import { selectTotalPriceDetails } from '../../redux/selectors/totalSelectors';
 
 type Pay = 'credit' | 'paypal' | 'bitcoin';
 
@@ -23,6 +24,8 @@ function PaymentPage() {
     (state: RootState) => state.passengerData.passenger
   );
 
+  const total = useSelector(selectTotalPriceDetails);
+
   const handlePayChange = (value: string) => {
     setPaySelect(value as 'credit' | 'paypal' | 'bitcoin');
   };
@@ -30,7 +33,7 @@ function PaymentPage() {
   return (
     <div className="payment">
       <div className="payment__wraper">
-        <h2 className="payment__wraper__title">Pay $1744 to confirm booking</h2>
+        <h2 className="payment__wraper__title">{`Pay $${total.total} to confirm booking`}</h2>
         <div className="payment__wraper__summary">
           <Ticket backgroundColor="lightgray" />
           <TravellerDetails

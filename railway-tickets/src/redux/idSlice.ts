@@ -1,13 +1,13 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-export type Id = string | number;
+export type Id = string | number | null;
 
 export interface IdState {
   idObject: Id;
 }
 
 const initialState: IdState = {
-  idObject: -1,
+  idObject: null,
 };
 
 const idSlice = createSlice({

@@ -1,8 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../redux/store';
+import { clearId, saveId } from '../../redux/idSlice';
 import './Food.scss';
-import type { AppDispatch } from '../../redux/store';
-import { clearId, saveId, type IdState } from '../../redux/idSlice';
-import { useState } from 'react';
 
 interface FoodProps {
   id?: number;
@@ -12,25 +11,19 @@ interface FoodProps {
   detailsOfDish: string;
 }
 
-//при нажатии на кнопку, получать id выбранного блюда
-// сохранять id в context для отображения в выбранного блюда в результирующем счете
-
 function Food({ id, imageUrl, price, nameOfDish, detailsOfDish }: FoodProps) {
-  const [isDisabled, setIsDisabled] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
+  const selectedId = useSelector((state: RootState) => state.idData.idObject);
+  const isDisabled = selectedId === id;
 
   const handleClickOnAddToTicket = () => {
-    const newId: IdState = {
-      idObject: id as string | number,
-    };
-    dispatch(saveId(newId));
-    setIsDisabled((current) => !current);
+    dispatch(saveId({ idObject: id as number }));
   };
 
   const handleClickOnCancelSelectedFood = () => {
     dispatch(clearId());
-    setIsDisabled((current) => !current);
   };
+
   return (
     <div className="food">
       <div

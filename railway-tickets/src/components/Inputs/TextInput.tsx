@@ -36,7 +36,6 @@ function TextInput({
   const homePage = location.pathname === '/';
   const [isClick, setIsClick] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
-  // const citiesData = useSelector((state: RootState) => state.cityData.cities); //cityData из store.ts; cities из sitiesSlice
   const citiesData = useSelector(selectAllCitiesArray); //cityData из store.ts; cities из sitiesSlice
   const isLoading = useSelector((state: RootState) => state.cityData.isLoading);
 

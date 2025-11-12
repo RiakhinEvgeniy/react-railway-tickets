@@ -13,8 +13,9 @@ import {
   type TripType,
 } from '../../redux/formSlice';
 import type { AppDispatch, RootState } from '../../redux/store';
-import './HomePage.scss';
 import loadTickets from '../../util/loadTicketsData';
+import './HomePage.scss';
+
 function HomePage() {
   const initialFormData = useSelector((state: RootState) => state.formData);
   const [formData, setFormData] = useState<FormData>(initialFormData);
