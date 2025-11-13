@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import './TravellerDetails.scss';
 import type { RootState } from '../../redux/store';
 import { selectTotalPriceDetails } from '../../redux/selectors/totalSelectors';
+import './TravellerDetails.scss';
 
 interface TravellerInfo {
   name: string;
@@ -37,8 +37,18 @@ function TravellerDetails({ travellerInfo }: TravellerInfoProps) {
         <span>{amountBaggage}</span>
       </div>
       <div className="traveller__info">
-        <span>{total.nameOfDish}</span>
-        <span>{amountFood}</span>
+        <div className="traveller__info__food">
+          {total.namesOfDish.length > 0 ? (
+            total.namesOfDish.map((nameOfDish, i) => (
+              <span key={i}>{nameOfDish}</span>
+            ))
+          ) : (
+            <span style={{ color: 'lightblue' }}>Without Food</span>
+          )}
+        </div>
+        <div>
+          <span className="traveller__info__amount">{`${amountFood} pcs.`}</span>
+        </div>
       </div>
       <div className="traveller__info__email">
         <span>E-Tickets will be sent to:</span>
