@@ -18,7 +18,6 @@ function ReviewBookingPage() {
 
   function handleBookingSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log('Подтверждение из формы в review');
   }
   if (!foods) {
     return <div>Array of foods is empty!</div>;

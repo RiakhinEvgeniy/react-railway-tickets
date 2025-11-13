@@ -41,11 +41,13 @@
     font-size: medium;
     cursor: pointer;
 
+    &:hover {
+      background-color: lightgreen;
+    }
+
     &:disabled {
       cursor: not-allowed;
-      background-color: rgb(236, 230, 230);
-      border: none;
-      color: lightgray;
+      background-color: lightgrey;
     }
   }
 }

@@ -4,8 +4,8 @@ import { createSelector } from '@reduxjs/toolkit';
 
 export interface TotalPriceDetails {
   baseFare: number;
-  foodPrice: number;
-  nameOfDish: string | undefined;
+  foodPrice: number[];
+  namesOfDish: string[];
   baggagePrice: number;
   tax: number;
   discount: number;
@@ -19,8 +19,6 @@ const PRICE_BAGGAGE_DEFAULT = 0;
 
 const selectFoodEntities = (state: RootState) => state.foodData.byId;
 
-const selectFoodId = (state: RootState) => state.idData.idObject;
-
 const selectBaggagePrice = (state: RootState) =>
   state.baggageData.isAdded
     ? state.baggageData.priceOfBaggage
@@ -28,30 +26,34 @@ const selectBaggagePrice = (state: RootState) =>
 
 const selectPromoCode = (state: RootState) => state.promoData.code;
 
+const selectSelectedFoodIds = (state: RootState) => state.arrayIdsData.selectedIds;
+
 // Мемоизированный селектор, который собирает всё вместе
 export const selectTotalPriceDetails = createSelector(
-  [selectFoodEntities, selectFoodId, selectBaggagePrice, selectPromoCode],
-  (foodEntities, foodId, baggagePrice, promoCode): TotalPriceDetails => {
-    
-    const key = foodId != null ? foodId : null;
+  [selectFoodEntities, selectSelectedFoodIds, selectBaggagePrice, selectPromoCode],
+  (foodEntities, selectedFoodIds, baggagePrice, promoCode): TotalPriceDetails => {
 
-    const food = key ? foodEntities[key as number] : undefined;
+    const selectedFoods = selectedFoodIds.map((id) => foodEntities[id]).filter(Boolean);
 
-    const foodPrice = food ? food.price : 0;
+    const totalPriceSelectedFoods = selectedFoods.reduce((sum, food) => sum + food.price, 0);
+
+    const pricesOfFood = selectedFoods.map((food) => food.price);
+
+    const namesOfFood = selectedFoods.map((food) => food.nameOfDish);
 
     const discount = getDiscountPercent(promoCode);
 
     const DISCOUNT =
-      ((BASE_TICKET_FARE + foodPrice + baggagePrice + CGST_SGST) * discount) /
+      ((BASE_TICKET_FARE + totalPriceSelectedFoods + baggagePrice + CGST_SGST) * discount) /
       100;
 
     const total =
-      BASE_TICKET_FARE + foodPrice + baggagePrice + CGST_SGST - DISCOUNT;
+      BASE_TICKET_FARE + totalPriceSelectedFoods + baggagePrice + CGST_SGST - DISCOUNT;
 
     return {
       baseFare: BASE_TICKET_FARE,
-      foodPrice,
-      nameOfDish: food?.nameOfDish,
+      foodPrice: pricesOfFood,
+      namesOfDish: namesOfFood,
       baggagePrice,
       tax: CGST_SGST,
       discount: DISCOUNT,

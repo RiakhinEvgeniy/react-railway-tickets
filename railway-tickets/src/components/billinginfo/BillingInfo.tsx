@@ -22,7 +22,6 @@ function BillingInfo({numberOfPassanger}: NumberPassengerProps) {
           label="Full Name"
           type="text"
           value={passengerData.passenger.fullName}
-          // onChange={setName}
           placeholder="Your name"
           autocomplete="name"
           name="fullName"
@@ -32,7 +31,6 @@ function BillingInfo({numberOfPassanger}: NumberPassengerProps) {
           label="Phone Number"
           type="tel"
           value={passengerData.passenger.phoneNumber}
-          // onChange={setPhoneNumber}
           placeholder="+049"
           autocomplete="tel"
           name="phoneNumber"
@@ -44,7 +42,6 @@ function BillingInfo({numberOfPassanger}: NumberPassengerProps) {
           label="Email"
           type="email"
           value={passengerData.passenger.email}
-          // onChange={setEmail}
           placeholder="email@company.com"
           autocomplete="email"
           name="email"
@@ -54,7 +51,6 @@ function BillingInfo({numberOfPassanger}: NumberPassengerProps) {
           label="Date of birth"
           type="text"
           value={passengerData.passenger.dateOfBirth}
-          // onChange={setBirth}
           placeholder="12.12.1970"
           autocomplete="dateOfBirth"
           name="dateOfBirth"

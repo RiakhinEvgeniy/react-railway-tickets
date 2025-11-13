@@ -13,12 +13,30 @@ function TotalCard() {
         <span>{`$${total.baseFare}`}</span>
       </div>
       <div className="totalcard__info">
-        {total.nameOfDish ? (
-          <span>{`${total.nameOfDish}`}</span>
-        ) : (
-          <span style={{ color: 'lightblue' }}>Without Food</span>
-        )}
-        <span>{`$${total.foodPrice}`}</span>
+        <div className="totalcard__info__box-for-name">
+          {total.namesOfDish.length > 0 ? (
+            total.namesOfDish.map((nameOfDish, i) => (
+              <span
+                key={i}
+                className="totalcard__info__box-for-name__name-dish"
+              >
+                {nameOfDish}
+              </span>
+            ))
+          ) : (
+            <span style={{ color: 'lightblue' }}>Without Food</span>
+          )}
+        </div>
+        <div className="totalcard__info__box-for-name">
+          {total.namesOfDish.length > 0
+            ? total.foodPrice.map((price, i) => (
+                <span
+                  key={i}
+                  className="totalcard__info__box-for-name__name-dish"
+                >{`$${price}`}</span>
+              ))
+            : 0}
+        </div>
       </div>
       <div className="totalcard__info">
         <span>Extra Baggage</span>

@@ -46,6 +46,7 @@ const passengerSlice = createSlice({
   },
 });
 
-export const { addPassenger, updatePassengerField, getPassengerInfo } = passengerSlice.actions;
+export const { addPassenger, updatePassengerField, getPassengerInfo } =
+  passengerSlice.actions;
 
 export default passengerSlice.reducer;

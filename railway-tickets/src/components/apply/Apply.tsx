@@ -1,15 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../../redux/store';
 import { addBaggage, type Baggage } from '../../redux/baggageSlice';
-import './Apply.scss';
 import { isApplyCode } from '../../util/discountUtil';
 import {
   clearPromo,
   saveCurrentPromo,
   setPromoCode,
 } from '../../redux/promoSlice';
+import { addAmount } from '../../redux/generalCounter';
+import './Apply.scss';
 
 function Apply() {
+  const amountBaggage = useSelector(
+    (state: RootState) => state.generalCounterData.amountBaggage
+  );
+  const amountFood = useSelector(
+    (state: RootState) => state.generalCounterData.amountFood
+  );
   const promoText = useSelector(
     (state: RootState) => state.promoData.currentPromo
   );
@@ -31,6 +38,9 @@ function Apply() {
     };
 
     dispatch(addBaggage(newBaggage));
+    if (amountBaggage >= 0) {
+      dispatch(addAmount({ amountBaggage: amountBaggage + 1, amountFood }));
+    }
   }
 
   return (

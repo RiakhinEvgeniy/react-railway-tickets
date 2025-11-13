@@ -44,7 +44,6 @@ function BillingInputs({
     <div className={`billing-input ${className}`}>
       <label htmlFor={inputId} className="billing-input__label">
         {label}
-        {/* {required && <span className="text-input__required">*</span>} */}
       </label>
       <input
         id={inputId}

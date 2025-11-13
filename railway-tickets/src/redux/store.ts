@@ -8,6 +8,8 @@ import foodReducer from './foodSlice';
 import idReducer from './idSlice';
 import baggageReducer from './baggageSlice';
 import promoReducer from './promoSlice';
+import counterReducer from './generalCounter';
+import arrayIdsReducer from './arrayIdsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +22,8 @@ export const store = configureStore({
     idData: idReducer,
     baggageData: baggageReducer,
     promoData: promoReducer,
+    generalCounterData: counterReducer,
+    arrayIdsData: arrayIdsReducer,
   },
 });
 
