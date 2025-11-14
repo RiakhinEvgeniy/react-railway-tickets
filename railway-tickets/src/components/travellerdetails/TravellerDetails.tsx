@@ -5,7 +5,7 @@ import './TravellerDetails.scss';
 
 interface TravellerInfo {
   name: string;
-  age: string;
+  age: number;
   extraBaggage?: number;
   nameOfFood?: string;
   extraFood?: number;

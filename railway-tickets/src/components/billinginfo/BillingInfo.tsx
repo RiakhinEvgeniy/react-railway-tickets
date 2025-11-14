@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import './BillingInfo.scss';
 
-interface  NumberPassengerProps {
+interface NumberPassengerProps {
   numberOfPassanger: number | 0;
 }
 
-function BillingInfo({numberOfPassanger}: NumberPassengerProps) {
+function BillingInfo({ numberOfPassanger }: NumberPassengerProps) {
   const passengerData = useSelector((state: RootState) => state.passengerData);
 
   return (
@@ -51,7 +51,7 @@ function BillingInfo({numberOfPassanger}: NumberPassengerProps) {
           label="Date of birth"
           type="text"
           value={passengerData.passenger.dateOfBirth}
-          placeholder="12.12.1970"
+          placeholder="DD.MM.YYYY"
           autocomplete="dateOfBirth"
           name="dateOfBirth"
           required

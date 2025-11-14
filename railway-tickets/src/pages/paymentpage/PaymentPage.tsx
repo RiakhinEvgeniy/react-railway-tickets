@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import './PaymentPage.scss';
 import { selectTotalPriceDetails } from '../../redux/selectors/totalSelectors';
+import { calculateAge } from '../../util/calculateAge';
 
 type Pay = 'credit' | 'paypal' | 'bitcoin';
 
@@ -23,6 +24,8 @@ function PaymentPage() {
   const passInfo = useSelector(
     (state: RootState) => state.passengerData.passenger
   );
+
+  const agePassenger = calculateAge(passInfo.dateOfBirth);
 
   const total = useSelector(selectTotalPriceDetails);
 
@@ -39,7 +42,7 @@ function PaymentPage() {
           <TravellerDetails
             travellerInfo={{
               name: passInfo.fullName,
-              age: '45',
+              age: agePassenger,
               email: passInfo.email,
             }}
           />

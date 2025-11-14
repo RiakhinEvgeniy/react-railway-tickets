@@ -14,6 +14,7 @@ interface UpdatePassengerPayload {
 
 export interface PassengerState {
   passenger: PassengerInfo;
+  error: string;
 }
 
 const initialState: PassengerState = {
@@ -23,6 +24,8 @@ const initialState: PassengerState = {
     email: '',
     dateOfBirth: '',
   },
+
+  error: '',
 };
 
 const passengerSlice = createSlice({
@@ -40,13 +43,13 @@ const passengerSlice = createSlice({
       state.passenger[action.payload.field] = action.payload.value;
     },
 
-    getPassengerInfo: (state) => {
-      return state;
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload
     },
   },
 });
 
-export const { addPassenger, updatePassengerField, getPassengerInfo } =
+export const { addPassenger, updatePassengerField, setError } =
   passengerSlice.actions;
 
 export default passengerSlice.reducer;

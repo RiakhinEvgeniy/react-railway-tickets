@@ -9,8 +9,8 @@ import Policy from '../../components/policy/Policy';
 import Ticket from '../../components/ticket/Ticket';
 import TotalCard from '../../components/totalcard/TotalCard';
 import { useCounter } from '../../context/CounterOfPass';
-import './ReviewBookingPage.scss';
 import { selectAllFoodsArray } from '../../redux/selectors/foodSelectors';
+import './ReviewBookingPage.scss';
 
 function ReviewBookingPage() {
   const { valueCounter } = useCounter();

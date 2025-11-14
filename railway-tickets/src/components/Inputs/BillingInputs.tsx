@@ -5,6 +5,7 @@ import {
   type PassengerInfo,
 } from '../../redux/passengerSlice';
 import './BillingInputs.scss';
+import { useValidateBirthDate } from '../../hooks/useValidateBirthDate';
 
 interface BillingInputsProps {
   label: string; // текст лейбла
@@ -31,14 +32,25 @@ function BillingInputs({
   type,
 }: BillingInputsProps) {
   const dispatch = useDispatch<AppDispatch>();
+
+  const validateBirthDate = useValidateBirthDate();
+
   // Обработчик изменения значения
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     dispatch(updatePassengerField({ field: name, value: e.target.value }));
+    validateBirthDate(e.target.value);
   }
 
   // Генерируем уникальный id для связи label и input
   const randomNum = Math.floor(Math.random() * 100000);
-  const inputId = `${+randomNum}-${name || label.toLowerCase().replace(/\s+/g, '-')}`;  
+  const inputId = `${+randomNum}-${
+    name || label.toLowerCase().replace(/\s+/g, '-')
+  }`;
+
+  let maxAmountCharsInBirthdate: number = 30;
+  if (placeholder === 'DD.MM.YYYY') {
+    maxAmountCharsInBirthdate = 10;
+  }
 
   return (
     <div className={`billing-input ${className}`}>
@@ -56,6 +68,7 @@ function BillingInputs({
         disabled={disabled}
         required={required}
         className="billing-input__field"
+        maxLength={maxAmountCharsInBirthdate}
       />
     </div>
   );
