@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import "./SimpleButton.scss";
+import { useNavigate } from 'react-router-dom';
+import './SimpleButton.scss';
 
 interface SimpleButtonProps {
+  id: string;
   className: string;
   text: string;
   type?: 'submit' | 'button';
@@ -9,17 +10,31 @@ interface SimpleButtonProps {
 
 function SimpleButton(buttonProps: SimpleButtonProps) {
   const navigate = useNavigate();
-  const { className, text, type = 'button' } = buttonProps;
+  const { id, className, text, type = 'button' } = buttonProps;
 
-const handleNavigate = () => {
-  navigate("/payment");
-}
+  const handleNavigate = () => {
+    if (id === 'review-booknow') {
+      navigate('/payment');
+    } else if (id === 'payment-booknow') {
+      navigate('/success');
+    } else if (['payment-cancel', 'review-cancel'].includes(id)) {
+      navigate(-1);
+    } else if (['success', 'success-cancel'].includes(id)) {
+      navigate('/');
+    }
+  };
 
   return (
     <div className="simple-btn">
-      <button className={`simple-btn__${className}`} onClick={handleNavigate} type={type}>{text}</button>
+      <button
+        id={id}
+        className={`simple-btn__${className}`}
+        onClick={handleNavigate}
+        type={type}
+      >
+        {text}
+      </button>
     </div>
   );
 }
-
 export default SimpleButton;

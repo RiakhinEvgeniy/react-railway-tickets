@@ -24,14 +24,16 @@ const selectBaggagePrice = (state: RootState) =>
     ? state.baggageData.priceOfBaggage
     : PRICE_BAGGAGE_DEFAULT;
 
+    const selectAmountBaggage = (state: RootState) => state.generalCounterData.amountBaggage;
+
 const selectPromoCode = (state: RootState) => state.promoData.code;
 
 const selectSelectedFoodIds = (state: RootState) => state.arrayIdsData.selectedIds;
 
 // Мемоизированный селектор, который собирает всё вместе
 export const selectTotalPriceDetails = createSelector(
-  [selectFoodEntities, selectSelectedFoodIds, selectBaggagePrice, selectPromoCode],
-  (foodEntities, selectedFoodIds, baggagePrice, promoCode): TotalPriceDetails => {
+  [selectFoodEntities, selectSelectedFoodIds, selectBaggagePrice, selectPromoCode, selectAmountBaggage],
+  (foodEntities, selectedFoodIds, baggagePrice, promoCode, amountBaggage): TotalPriceDetails => {
 
     const selectedFoods = selectedFoodIds.map((id) => foodEntities[id]).filter(Boolean);
 
@@ -44,11 +46,11 @@ export const selectTotalPriceDetails = createSelector(
     const discount = getDiscountPercent(promoCode);
 
     const DISCOUNT =
-      ((BASE_TICKET_FARE + totalPriceSelectedFoods + baggagePrice + CGST_SGST) * discount) /
+      ((BASE_TICKET_FARE + totalPriceSelectedFoods + (baggagePrice * amountBaggage) + CGST_SGST) * discount) /
       100;
 
     const total =
-      BASE_TICKET_FARE + totalPriceSelectedFoods + baggagePrice + CGST_SGST - DISCOUNT;
+      BASE_TICKET_FARE + totalPriceSelectedFoods + (baggagePrice * amountBaggage) + CGST_SGST - DISCOUNT;
 
     return {
       baseFare: BASE_TICKET_FARE,

@@ -13,9 +13,9 @@ import Footer from '../../components/footer/Footer';
 import Policy from '../../components/policy/Policy';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
-import './PaymentPage.scss';
 import { selectTotalPriceDetails } from '../../redux/selectors/totalSelectors';
 import { calculateAge } from '../../util/calculateAge';
+import './PaymentPage.scss';
 
 type Pay = 'credit' | 'paypal' | 'bitcoin';
 
@@ -109,8 +109,8 @@ function PaymentPage() {
               Discounts, offers and price concessions will be applied later
               during payment
             </span>
-            <SimpleButton className="blue" text="Book Now" />
-            <SimpleButton className="transparent" text="Cancel" />
+            <SimpleButton id='payment-booknow' className="blue" text="Book Now" />
+            <SimpleButton id='payment-cancel' className="transparent" text="Cancel" />
           </div>
         </div>
         <Policy />

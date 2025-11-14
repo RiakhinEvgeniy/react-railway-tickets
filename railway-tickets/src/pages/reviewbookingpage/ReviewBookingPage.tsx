@@ -77,8 +77,8 @@ function ReviewBookingPage() {
             payment
           </span>
           <div className="review__wraper__btn">
-            <SimpleButton className="blue" text="Book Now" type="submit" />
-            <SimpleButton className="transparent" text="Cancel" />
+            <SimpleButton id='review-booknow' className="blue" text="Book Now" type="submit" />
+            <SimpleButton id='review-cancel' className="transparent" text="Cancel" />
           </div>
         </form>
         <Policy />

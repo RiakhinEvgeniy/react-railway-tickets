@@ -43,7 +43,7 @@ function TravellerDetails({ travellerInfo }: TravellerInfoProps) {
               <span key={i}>{nameOfDish}</span>
             ))
           ) : (
-            <span style={{ color: 'lightblue' }}>Without Food</span>
+            <span style={{ color: 'lightblue' }}>Food not ordered.</span>
           )}
         </div>
         <div>

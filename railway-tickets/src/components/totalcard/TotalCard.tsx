@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux';
 import './TotalCard.scss';
 import { selectTotalPriceDetails } from '../../redux/selectors/totalSelectors';
+import type { RootState } from '../../redux/store';
 
 function TotalCard() {
   const total = useSelector(selectTotalPriceDetails);
+  const amountBaggage = useSelector((state: RootState) => state.generalCounterData.amountBaggage);
 
   return (
     <div className="totalcard">
@@ -24,7 +26,7 @@ function TotalCard() {
               </span>
             ))
           ) : (
-            <span style={{ color: 'lightblue' }}>Without Food</span>
+            <span style={{ color: 'lightblue' }}>Food not ordered.</span>
           )}
         </div>
         <div className="totalcard__info__box-for-name">
@@ -40,7 +42,7 @@ function TotalCard() {
       </div>
       <div className="totalcard__info">
         <span>Extra Baggage</span>
-        <span>{`$${total.baggagePrice}`}</span>
+        <span>{`$${total.baggagePrice * amountBaggage}`}</span>
       </div>
       <div className="totalcard__info">
         <span>CGST & SGST</span>

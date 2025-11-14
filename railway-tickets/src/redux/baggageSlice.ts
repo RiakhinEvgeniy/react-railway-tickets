@@ -6,7 +6,7 @@ export interface Baggage {
 }
 
 const initialState: Baggage = {
-  priceOfBaggage: 240,
+  priceOfBaggage: 0,
   isAdded: false,
 };
 
@@ -19,16 +19,12 @@ const baggageSlice = createSlice({
       state.priceOfBaggage = action.payload.priceOfBaggage;
     },
 
-    getPriceOfBaggage: (state) => {
-      return state;
-    },
-
     cancelBaggage: (state) => {
-        state = initialState;
-    }
+      state = initialState;
+    },
   },
 });
 
-export const { addBaggage, getPriceOfBaggage, cancelBaggage } = baggageSlice.actions;
+export const { addBaggage, cancelBaggage } = baggageSlice.actions;
 
 export default baggageSlice.reducer;

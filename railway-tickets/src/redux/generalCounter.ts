@@ -19,8 +19,10 @@ const genegalCounter = createSlice({
       state.amountFood = action.payload.amountFood;
     },
 
-    getAmountFoodAndBaggage: (state) => {
-      return state;
+    decreaseAmountBaggage: (state) => {
+      if (state.amountBaggage > 0) {
+        state.amountBaggage -= 1;
+      }
     },
 
     clearGeneralCounter: (state) => {
@@ -30,6 +32,5 @@ const genegalCounter = createSlice({
   },
 });
 
-export const { addAmount, getAmountFoodAndBaggage, clearGeneralCounter } =
-  genegalCounter.actions;
+export const { addAmount, decreaseAmountBaggage, clearGeneralCounter } = genegalCounter.actions;
 export default genegalCounter.reducer;

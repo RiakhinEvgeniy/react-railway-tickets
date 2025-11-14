@@ -1,11 +1,11 @@
-import TrainSuccess from "../../assets/train_success.png";
-import QR from "../../assets/qrcode.png";
-import Ticket from "../../components/ticket/Ticket";
-import TravellerDetailsSuccess from "../../components/travellerdetails_success/TravellerDetailsSuccess";
-import "./SuccessPage.scss";
-import SimpleButton from "../../components/buttons/SimpleButton";
-import Policy from "../../components/policy/Policy";
-import Footer from "../../components/footer/Footer";
+import TrainSuccess from '../../assets/train_success.png';
+import QR from '../../assets/qrcode.png';
+import Ticket from '../../components/ticket/Ticket';
+import TravellerDetailsSuccess from '../../components/travellerdetails_success/TravellerDetailsSuccess';
+import SimpleButton from '../../components/buttons/SimpleButton';
+import Policy from '../../components/policy/Policy';
+import Footer from '../../components/footer/Footer';
+import './SuccessPage.scss';
 
 function SuccessPage() {
   return (
@@ -30,15 +30,21 @@ function SuccessPage() {
             </span>
           </div>
           <Ticket />
-          <TravellerDetailsSuccess
-            travellerInfo={{ name: "Evgeniy", email: "riakhin@gmail.com" }}
-          />
+          <TravellerDetailsSuccess/>
         </div>
         <div className="successpage__wraper__qrcode">
           <img src={QR} alt="qrcode" />
           <div className="successpage__wraper__qrcode__btn">
-            <SimpleButton className="blue" text="Book another ticket" />
-            <SimpleButton className="blue" text="Download ticket" />
+            <SimpleButton
+              id="success"
+              className="blue"
+              text="Book another ticket"
+            />
+            <SimpleButton
+              id="success-cancel"
+              className="blue"
+              text="Download ticket"
+            />
           </div>
         </div>
         <Policy />

@@ -1,13 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../../redux/store';
-import { addBaggage, type Baggage } from '../../redux/baggageSlice';
+import {
+  addBaggage,
+  cancelBaggage,
+  type Baggage,
+} from '../../redux/baggageSlice';
 import { isApplyCode } from '../../util/discountUtil';
 import {
   clearPromo,
   saveCurrentPromo,
   setPromoCode,
 } from '../../redux/promoSlice';
-import { addAmount } from '../../redux/generalCounter';
+import { addAmount, decreaseAmountBaggage } from '../../redux/generalCounter';
 import './Apply.scss';
 
 function Apply() {
@@ -33,13 +37,24 @@ function Apply() {
 
   function addBaggageToTicket() {
     const newBaggage: Baggage = {
-      priceOfBaggage: 240,
+      priceOfBaggage: 50,
       isAdded: true,
     };
 
     dispatch(addBaggage(newBaggage));
+
     if (amountBaggage >= 0) {
       dispatch(addAmount({ amountBaggage: amountBaggage + 1, amountFood }));
+    }
+  }
+
+  function decreaseAmountBaggageFromTicket() {
+    if (amountBaggage <= 0) return;
+    if (amountBaggage === 1) {
+      dispatch(decreaseAmountBaggage());
+      dispatch(cancelBaggage());
+    } else {
+      dispatch(decreaseAmountBaggage());
     }
   }
 
@@ -57,13 +72,21 @@ function Apply() {
         />
       </div>
       <div className="apply-box__code-bag">
-        <h2 className="apply-box__code-bag__title">Extra Baggage</h2>
+        <h2 className="apply-box__code-bag__title">{`Extra Baggage: ${amountBaggage}`}</h2>
         <button
           type="button"
           className="apply-box__code-bag__btn"
           onClick={addBaggageToTicket}
         >
           Add to ticket
+        </button>
+        <button
+          type="button"
+          className="apply-box__code-bag__btn-delete"
+          onClick={decreaseAmountBaggageFromTicket}
+          disabled={amountBaggage <= 0}
+        >
+          Delete
         </button>
       </div>
     </div>
