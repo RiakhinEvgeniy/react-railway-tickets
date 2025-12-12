@@ -19,7 +19,7 @@ function SimpleButton(buttonProps: SimpleButtonProps) {
       navigate('/success');
     } else if (['payment-cancel', 'review-cancel'].includes(id)) {
       navigate(-1);
-    } else if (['success', 'success-cancel'].includes(id)) {
+    } else if (['success', 'success-cancel', 'no-tickets'].includes(id)) {
       navigate('/');
     }
   };

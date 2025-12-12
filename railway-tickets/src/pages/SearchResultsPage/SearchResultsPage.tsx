@@ -16,6 +16,7 @@ import {
 import filterTicketsByCities from '../../util/filterTickets';
 import loadFoodsDataFromDB from '../../util/loadFoodsData';
 import './SearchResultsPage.scss';
+import SimpleButton from '../../components/buttons/SimpleButton';
 
 function SearchResultsPage() {
   const initialFormData = useSelector((state: RootState) => state.formData);
@@ -53,8 +54,6 @@ function SearchResultsPage() {
   const changeDisplayGeneralCard = () => {
     setIsDisplayGeneralCard(!isDisplayGeneralCard);
   };
-
-  console.log(isDisplayGeneralCard);
 
   return (
     <div className="search-page">
@@ -152,13 +151,26 @@ function SearchResultsPage() {
                 <GeneralCard key={ticket.id} ticketData={ticket} />
               ))
             ) : (
-              <p style={{ color: 'black', fontSize: '30px' }}>
-                Билетов по вашему запросу не найдено.
-              </p>
+              <div className="search-page__wraper_no-tickets">
+                <p style={{ color: 'black', fontSize: '30px' }}>
+                  No tickets were found matching your request.
+                </p>
+                <SimpleButton
+                  id="no-tickets"
+                  className="blue"
+                  text="Select Tickets"
+                  type="button"
+                />
+              </div>
             )}
           </div>
         ) : (
-          <button className="btn-show-tickets" onClick={changeDisplayGeneralCard}>Show Tickets</button>
+          <button
+            className="btn-show-tickets"
+            onClick={changeDisplayGeneralCard}
+          >
+            Show Tickets
+          </button>
         )}
       </div>
       <Footer />
