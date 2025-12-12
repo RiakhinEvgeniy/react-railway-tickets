@@ -64,6 +64,13 @@ $lightBackground: rgb(240, 240, 240);
       text-align: left;
       width: 100%;
     }
+
+    &_general-card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 }
 
@@ -119,4 +126,17 @@ $lightBackground: rgb(240, 240, 240);
       }
     }
   }
+}
+
+.btn-show-tickets {
+  margin: 25px;
+  background-color: #5e4ae3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 20px 30px;
+  width: 430px;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
 }

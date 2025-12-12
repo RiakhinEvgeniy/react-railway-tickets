@@ -10,7 +10,6 @@ import { useValidateBirthDate } from '../../hooks/useValidateBirthDate';
 interface BillingInputsProps {
   label: string; // текст лейбла
   value: string; // текущее значение
-  // onChange: (value: string) => void; // функция изменения значения
   placeholder?: string; // плейсхолдер (опционально)
   autocomplete?: string;
   name: keyof PassengerInfo; // name атрибут (опционально)

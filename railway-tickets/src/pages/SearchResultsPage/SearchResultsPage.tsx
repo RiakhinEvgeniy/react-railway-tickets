@@ -20,6 +20,8 @@ import './SearchResultsPage.scss';
 function SearchResultsPage() {
   const initialFormData = useSelector((state: RootState) => state.formData);
   const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [isDisplayGeneralCard, setIsDisplayGeneralCard] =
+    useState<boolean>(true);
   const dispatchTripType = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const avilableTickets = filterTicketsByCities();
@@ -47,6 +49,12 @@ function SearchResultsPage() {
     e.preventDefault(); // предотвращаю перезагрузку страницы
     navigate('/review');
   };
+
+  const changeDisplayGeneralCard = () => {
+    setIsDisplayGeneralCard(!isDisplayGeneralCard);
+  };
+
+  console.log(isDisplayGeneralCard);
 
   return (
     <div className="search-page">
@@ -134,14 +142,23 @@ function SearchResultsPage() {
           </div>
         </div>
         <h1>Avilable Trains</h1>
-        {avilableTickets.length > 0 ? (
-          avilableTickets.map((ticket) => (
-            <GeneralCard key={ticket.id} ticketData={ticket} />
-          ))
+        {isDisplayGeneralCard ? (
+          <div
+            className="search-page__wraper_general-card"
+            onClick={changeDisplayGeneralCard}
+          >
+            {avilableTickets.length > 0 ? (
+              avilableTickets.map((ticket) => (
+                <GeneralCard key={ticket.id} ticketData={ticket} />
+              ))
+            ) : (
+              <p style={{ color: 'black', fontSize: '30px' }}>
+                Билетов по вашему запросу не найдено.
+              </p>
+            )}
+          </div>
         ) : (
-          <p style={{ color: 'black', fontSize: '30px' }}>
-            Билетов по вашему запросу не найдено.
-          </p>
+          <button className="btn-show-tickets" onClick={changeDisplayGeneralCard}>Show Tickets</button>
         )}
       </div>
       <Footer />

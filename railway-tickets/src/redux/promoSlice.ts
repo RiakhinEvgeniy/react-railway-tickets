@@ -24,17 +24,13 @@ const promoSlice = createSlice({
       state.currentPromo = action.payload;
     },
 
-    getCurrentPromo: (state) => {
-      state.currentPromo;
-    },
-
     clearPromo: (state) => {
       state.code = null;
     },
   },
 });
 
-export const { setPromoCode, saveCurrentPromo, getCurrentPromo, clearPromo } =
+export const { setPromoCode, saveCurrentPromo, clearPromo } =
   promoSlice.actions;
 
 export default promoSlice.reducer;
