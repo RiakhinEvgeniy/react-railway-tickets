@@ -33,15 +33,16 @@ function BillingInputs({
   type,
 }: BillingInputsProps) {
   const dispatch = useDispatch<AppDispatch>();
-
+  const randomNum = useId();
   const validateBirthDate = useValidateBirthDate();
   const error = useSelector((state: RootState) => state.passengerData.error);
-  console.log('Birthdate error:', error);
 
   // Обработчик изменения значения
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch(updatePassengerField({ field: name, value: e.currentTarget.value }));
+      dispatch(
+        updatePassengerField({ field: name, value: e.currentTarget.value })
+      );
     },
     [dispatch, name]
   );
@@ -63,7 +64,7 @@ function BillingInputs({
 
   // Генерируем уникальный id для связи label и input
   // const randomNum = Math.floor(Math.random() * 100000);
-  const randomNum = useId;
+
   const inputId = `${+randomNum}-${
     name || label.toLowerCase().replace(/\s+/g, '-')
   }`;
@@ -95,7 +96,7 @@ function BillingInputs({
         aria-invalid={name === 'dateOfBirth' && !!error}
       />
       {name === 'dateOfBirth' && error && (
-        <div className="billing-input__error" aria-live='polite'>
+        <div className="billing-input__error" aria-live="polite">
           {error}
         </div>
       )}
