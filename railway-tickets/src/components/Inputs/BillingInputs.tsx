@@ -5,9 +5,9 @@ import {
   updatePassengerField,
   type PassengerInfo,
 } from '../../redux/passengerSlice';
-import './BillingInputs.scss';
 import { useValidateBirthDate } from '../../hooks/useValidateBirthDate';
 import { useCallback, useId } from 'react';
+import './BillingInputs.scss';
 
 interface BillingInputsProps {
   label: string; // текст лейбла
@@ -61,9 +61,6 @@ function BillingInputs({
       dispatch(setError(''));
     }
   }, [name, dispatch]);
-
-  // Генерируем уникальный id для связи label и input
-  // const randomNum = Math.floor(Math.random() * 100000);
 
   const inputId = `${+randomNum}-${
     name || label.toLowerCase().replace(/\s+/g, '-')
