@@ -33,7 +33,6 @@ function BillingInputs({
   type,
 }: BillingInputsProps) {
   const dispatch = useDispatch<AppDispatch>();
-  const randomNum = useId();
   const validateBirthDate = useValidateBirthDate();
   const error = useSelector((state: RootState) => state.passengerData.error);
 
@@ -62,9 +61,7 @@ function BillingInputs({
     }
   }, [name, dispatch]);
 
-  const inputId = `${+randomNum}-${
-    name || label.toLowerCase().replace(/\s+/g, '-')
-  }`;
+  const inputId = useId();
 
   let maxAmountCharsInBirthdate: number = 30;
   if (placeholder === 'DD.MM.YYYY') {

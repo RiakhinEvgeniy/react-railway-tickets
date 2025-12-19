@@ -16,8 +16,9 @@ import {
 } from '../../redux/formSlice';
 import filterTicketsByCities from '../../util/filterTickets';
 import loadFoodsDataFromDB from '../../util/loadFoodsData';
-import './SearchResultsPage.scss';
 import SimpleButton from '../../components/buttons/SimpleButton';
+import Button from '../../components/buttons/Button';
+import './SearchResultsPage.scss';
 
 function SearchResultsPage() {
   const initialFormData = useSelector((state: RootState) => state.formData);
@@ -66,7 +67,7 @@ function SearchResultsPage() {
     };
 
     dispatchTripType(setForm(newDataForm));
-  }  
+  };
 
   return (
     <div className="search-page">
@@ -135,13 +136,27 @@ function SearchResultsPage() {
             )}
           </div>
 
-          <button type="button" className="ticket-form__submit" onClick={confirmEnteredInfo}>
+          <Button
+            id="confirm-info"
+            type="button"
+            text="Confirm Enter Information"
+            className="confirm-information"
+            onClick={confirmEnteredInfo}
+          />
+
+          <Button id="submitForm" type="submit" className="blue" text="Book" />
+
+          {/* <button
+            type="button"
+            className="ticket-form__submit"
+            onClick={confirmEnteredInfo}
+          >
             Confirm Enter Information
-          </button>
-          
-          <button type="submit" className="ticket-form__submit">
+          </button> */}
+
+          {/* <button type="submit" className="ticket-form__submit">
             Book
-          </button>
+          </button> */}
         </form>
         <div className="search-page__wraper__for-images">
           <div className="search-page__wraper__for-images__image"></div>

@@ -1,4 +1,5 @@
 // import React, { useEffect } from 'react';
+import { useId } from 'react';
 import './DateInput.scss';
 import { useLocation } from 'react-router-dom';
 // import { fetchTickets } from '../../redux/ticketsSlice';
@@ -44,12 +45,6 @@ function DateInput({
 }: DateInputProps) {
   const location = useLocation();
   const homePage = location.pathname === '/';
-  // const dispatch = useDispatch<AppDispatch>();
-
-  // useEffect(() => {
-  //   dispatch(fetchTickets());
-  // }, [dispatch]);
-
   const dateInputStyle = {
     color: homePage ? 'white' : 'black',
   };
@@ -60,9 +55,7 @@ function DateInput({
   }
 
   // Генерируем уникальный id для связи label и input
-  const inputId = `date-input-${
-    name || label.toLowerCase().replace(/\s+/g, '-')
-  }`;
+  const inputId = useId();
 
   return (
     <div

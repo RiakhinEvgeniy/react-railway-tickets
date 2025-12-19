@@ -1,5 +1,5 @@
 // TextInput.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../../redux/store';
@@ -64,7 +64,7 @@ function TextInput({
   }
 
   // 4. Генерируем уникальный id для связи label и input
-  const inputId = `input-${name || label.toLowerCase().replace(/\s+/g, '-')}`;
+  const inputId = useId();
 
   if (!isLoading) {
     return <div>Loading...</div>;
