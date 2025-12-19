@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../../redux/store';
 import {
+  setForm,
   setTripType,
   type FormData,
   type TripType,
@@ -54,6 +55,18 @@ function SearchResultsPage() {
   const changeDisplayGeneralCard = () => {
     setIsDisplayGeneralCard(!isDisplayGeneralCard);
   };
+
+  const confirmEnteredInfo = () => {
+    const newDataForm: FormData = {
+      tripType: formData.tripType,
+      fromCity: formData.fromCity,
+      toCity: formData.toCity,
+      departureDate: formData.departureDate,
+      returnDate: formData.returnDate,
+    };
+
+    dispatchTripType(setForm(newDataForm));
+  }  
 
   return (
     <div className="search-page">
@@ -122,6 +135,10 @@ function SearchResultsPage() {
             )}
           </div>
 
+          <button type="button" className="ticket-form__submit" onClick={confirmEnteredInfo}>
+            Confirm Enter Information
+          </button>
+          
           <button type="submit" className="ticket-form__submit">
             Book
           </button>
